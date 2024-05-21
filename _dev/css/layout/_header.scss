@@ -1,65 +1,89 @@
 .l-header{
-  background-color: $header-bg;
-  margin-bottom: $spacer;
-  box-shadow: $header-box-shadow;
+    background-color: $header-bg;
+    margin-bottom: $spacer;
+    box-shadow: $header-box-shadow;
+}
+
+#header {
+    z-index: 999;
+    width: 100%;
+    top: 0;
+    #link-mobile {
+        display: none;
+    }
+    &.sticky {
+        position: fixed;
+    }
+}
+
+#checkout {
+    #header {
+        #link-mobile {
+            display: block;
+
+            @include media-breakpoint-desktop {
+                display: none;
+            }
+        }
+    }
 }
 
 .header__up{
-  align-content: center;
+    align-content: center;
 }
 
 .header-top{
-  flex-wrap: wrap;
-  padding-top: $spacer*1.25;
-  padding-bottom: $spacer*1.25;
+    flex-wrap: wrap;
+    padding-top: $spacer*1.25;
+    padding-bottom: $spacer*1.25;
 }
 
 .header__search{
-  flex: 1;
-  padding-right: $grid-gutter-width/2;
-  padding-left: $grid-gutter-width/2;
+    flex: 1;
+    padding-right: $grid-gutter-width/2;
+    padding-left: $grid-gutter-width/2;
 }
 .header__right,
 .header-nav__right{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .header__rightitem:not(:last-child){
-  margin-right: $spacer/2;
+    margin-right: $spacer/2;
 }
 .header__logo--checkout{
-  max-width: 200px;
+    max-width: 200px;
 }
 .header-nav--checkout{
-  padding-top: $spacer;
-  padding-bottom: $spacer;
+    padding-top: $spacer;
+    padding-bottom: $spacer;
 }
 @include media-breakpoint-mobile{
-  .header__logo,
-  .header__logo--checkout{
-    max-width: 50%;
-  }
-  .header__search {
-    width: 100%;
-    padding: 0;
-    flex: auto;
-    order: 10;
-    margin-top: 10px;
-  }
-  .header__logo--checkout{
-    margin: 0 auto;
-  }
+    .header__logo,
+    .header__logo--checkout{
+        max-width: 50%;
+    }
+    .header__search {
+        width: 100%;
+        padding: 0;
+        flex: auto;
+        order: 10;
+        margin-top: 10px;
+    }
+    .header__logo--checkout{
+        margin: 0 auto;
+    }
 }
 @include media-breakpoint-desktop(){
-  .header-top__col{
-    width: 30%;
-  }
+    .header-top__col{
+        width: 30%;
+    }
 }
 @include media-breakpoint-up(xl) {
-  .header-top__col{
-    width: 25%;
-  }
+    .header-top__col{
+        width: 25%;
+    }
 }
 
 

@@ -24,7 +24,7 @@
  *}
  
 {block name='head_font'}
-  {include file="_partials/font.tpl"}
+  {include file="_partials/font-pre.tpl"}
 {/block}
 {block name='head_charset'}
   <meta charset="utf-8">
@@ -45,6 +45,13 @@
     <meta name="robots" content="none">
   {/if}
 
+  {if isset($preloads)}
+      {foreach from=$preloads item=preload}
+         <link rel="preload" as="image" href="{$preload}" />
+      {/foreach}
+  {/if}
+  
+  
   {if $page.page_name == 'product'}
     <link rel="canonical" href="{$product.canonical_url}">
   {elseif $page.canonical}

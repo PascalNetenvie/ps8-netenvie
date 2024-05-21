@@ -36,7 +36,17 @@
         <div class="row">
           <div class="col-lg-6 divide-right">
             <div class="media">
+                            {assign var='productimg' value=Image::getImages($language.id, $product.id, $product.id_product_attribute)}  
+            {if isset($productimg[0])}
+                           
+              <img class="product-image modal-cart__image" src="{$link->getImageLink($product.link_rewrite,$product.id_product|cat:"-"|cat:$productimg[0].id_image, 'pdt_300')}" alt="{$product.cover.legend}" width="{$product.cover.medium.width}" height="{$product.cover.medium.height}">
+             
+            {else}
+                   
               <img class="product-image modal-cart__image" src="{$product.cover.medium.url}" alt="{$product.cover.legend}" width="{$product.cover.medium.width}" height="{$product.cover.medium.height}">
+             
+            {/if}
+ 
               <div class="media-body">
                 <p class="h5 product-name modal-cart__name">{$product.name}</p>
                 <p class="product-price">{$product.price}</p>

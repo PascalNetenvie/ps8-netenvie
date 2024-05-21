@@ -23,7 +23,7 @@
 * International Registered Trademark & Property of PrestaShop SA
  *}
 <div class="row u-a-i-c">
-  <div class="small col-lg-4">
+  <div class="small col-auto m-auto col-lg-4">
     {block name='pagination_summary'}
       {l s='Showing %from%-%to% of %total% item(s)' d='Shop.Theme.Catalog' sprintf=['%from%' => $pagination.items_shown_from ,'%to%' => $pagination.items_shown_to, '%total%' => $pagination.total_items]}
     {/block}

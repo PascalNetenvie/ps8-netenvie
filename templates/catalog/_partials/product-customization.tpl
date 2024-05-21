@@ -68,7 +68,7 @@
                         {/if}
                         </div>
                     {/foreach}
-                    <button class="btn btn-primary" type="submit" name="submitCustomizedData">{l s='Save Customization' d='Shop.Theme.Actions'}</button>
+                    <button class="btn btn-primary" type="button" name="submitCustomizedData">{l s='Save Customization' d='Shop.Theme.Actions'}</button>
                 </form>
             {/block}
         </div>

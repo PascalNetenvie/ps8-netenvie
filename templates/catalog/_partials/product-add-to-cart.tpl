@@ -45,7 +45,7 @@
           <button
             class="btn btn-primary add-to-cart btn-lg btn-block btn-add-to-cart js-add-to-cart"
             data-button-action="add-to-cart"
-            type="submit"
+            type="button"
             {if !$product.add_to_cart_url}
               disabled
             {/if}

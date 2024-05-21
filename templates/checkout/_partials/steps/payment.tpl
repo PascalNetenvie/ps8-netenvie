@@ -35,7 +35,7 @@
                                 {if $option.id === $selected_payment_option}
                                     {l s='Selected' d='Shop.Theme.Checkout'}
                                 {else}
-                                    <button class="ps-hidden-by-js" type="submit" name="select_payment_option"
+                                    <button class="ps-hidden-by-js" type="button" name="select_payment_option"
                                             value="{$option.id}">
                                         {l s='Choose' d='Shop.Theme.Actions'}
                                     </button>
@@ -146,7 +146,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="{l s='Close' d='Shop.Theme.Global'}">
-                        <span aria-hidden="true">&times;</span>
+                        <i class="material-icons">close</i>
                     </button>
                 </div>
                 <div class="modal-body">

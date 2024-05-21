@@ -48,7 +48,7 @@
     margin-right: auto;
 
     &:before,
-    &:after {
+        &:after {
         content: "";
         display: table;
     }
@@ -70,6 +70,7 @@
     }
     img {
         display: block;
+        margin: auto;
     }
     &.slick-loading img {
         display: none;
@@ -97,4 +98,19 @@
 }
 .slick-arrow.slick-hidden {
     display: none;
+}
+
+.product-thumbs {
+
+    .slick-arrow {
+        height: auto;
+        left: 50%;
+        margin-left: -25px;
+        position: relative;
+        transform: none !important;
+    }
+    .slick-prev {
+    }
+    .slick-next {
+    }
 }

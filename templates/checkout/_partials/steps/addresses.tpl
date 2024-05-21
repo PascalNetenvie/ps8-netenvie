@@ -85,7 +85,7 @@
 
         {if $use_same_address && !$cart.is_virtual}
           <p>
-            <a class="text-underline text-primary" data-link-action="different-invoice-address" href="{$use_different_address_url}">
+            <a class="text-underline text-primary" data-link-action="different-invoice-address" href="{$use_different_address_url}#block-invoice-address">
               {l s='Billing address differs from shipping address' d='Shop.Theme.Checkout'}
             </a>
           </p>
@@ -95,7 +95,7 @@
 
       {if !$use_same_address}
 
-        <h2 class="h4 invoice__address">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</h2>
+        <h2 class="h4 invoice__address" id="block-invoice-address">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</h2>
 
         {if $show_invoice_address_form}
           <div id="invoice-address" class="form-wrapper">

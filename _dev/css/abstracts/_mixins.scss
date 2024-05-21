@@ -10,3 +10,13 @@
     @content;
   }
 }
+
+
+@function stripUnit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+
+@function rem($pxValue) {
+  @return #{stripUnit($pxValue) / stripUnit(16)}rem;
+}

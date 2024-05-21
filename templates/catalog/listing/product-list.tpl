@@ -30,7 +30,7 @@
     {block name='product_list_header'}
       <h1 id="js-product-list-header">{$listing.label}</h1>
     {/block}
-
+    
     <section id="products">
       {if $listing.products|count}
 

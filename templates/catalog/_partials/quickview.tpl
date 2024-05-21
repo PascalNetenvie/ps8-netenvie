@@ -28,7 +28,7 @@
      <div class="modal-header">
        <h1 class="modal-title">{$product.name}</h1>
        <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-         <span aria-hidden="true">&times;</span>
+         <i class="material-icons">close</i>
        </button>
      </div>
      <div class="modal-body">
@@ -61,7 +61,7 @@
 
                 {block name='product_refresh'}
                     {if !isset($product.product_url)}
-                    <input class="product-refresh" data-url-update="false" name="refresh" type="submit" value="{l s='Refresh' d='Shop.Theme.Actions'}" hidden>
+                    <input class="product-refresh" data-url-update="false" name="refresh" type="button" value="{l s='Refresh' d='Shop.Theme.Actions'}" hidden>
                     {/if}
                 {/block}
             </form>

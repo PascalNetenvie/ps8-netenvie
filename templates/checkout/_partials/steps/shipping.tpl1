@@ -37,8 +37,8 @@
            {block name='delivery_options'}
              <div class="delivery-options">
                {foreach from=$delivery_options item=carrier key=carrier_id}
-                 <label class="delivery-option">
-                   <div for="delivery_option_{$carrier.id}" class="row delivery-option-2">
+                 <label for="delivery_option_{$carrier.id}" class="delivery-option">
+                   <div class="row delivery-option-2">
                      <div class="col-1">
                        <div class="custom-control custom-radio">
                          <input class="custom-control-input" type="radio" name="delivery_option[{$id_address}]"
@@ -49,14 +49,14 @@
                        </div>
                      </div>
                      {if $carrier.logo}
-                       <div class="col-10 col-sm-2">
+                       <div class="col-10 col-sm-1">
                          <img src="{$carrier.logo}" alt="{$carrier.name}" />
                        </div>
                      {/if}
-                     <div class="col-12 {if $carrier.logo}col-sm-5{else}col-sm-7{/if}">
+                     <div class="col-12 {if $carrier.logo}col-sm-4{else}col-sm-5{/if}">
                        <span class="h6 carrier-name">{$carrier.name}</span>
                      </div>
-                     <div class="col-12 col-sm-2">
+                     <div class="col-12 col-sm-4">
                        <span class="carrier-delay">{$carrier.delay}</span>
                      </div>
                      <div class="col-12 col-sm-2 text--right">

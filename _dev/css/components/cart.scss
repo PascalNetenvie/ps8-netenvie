@@ -10,6 +10,9 @@
 //    color:$blockcart-inactive-color;
 //  }
 //}
+#cart #wrapper {
+    padding-top: rem(40px);
+}
 .product-line-actions{
   display:flex;
   justify-content: space-between;
@@ -40,6 +43,8 @@
 }
 .product-line__img{
   margin-right: $spacer;
+  width: 100px;
+  height: auto;
 }
 @include media-breakpoint-mobile {
   .product-line__img{

@@ -49,7 +49,7 @@
             <i class="material-icons d-inline">&#xE5D2;</i>
         </button>
         <a href="{$urls.base_url}" class="header__logo header-top__col">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name}">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name}" width="100" height="28">
         </a>
         <div class="header__search">
             {hook h='displaySearch'}

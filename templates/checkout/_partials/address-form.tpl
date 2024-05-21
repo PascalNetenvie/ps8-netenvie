@@ -31,7 +31,7 @@
 
 {block name='form_buttons'}
   {if !$form_has_continue_button}
-    <button type="submit" class="btn btn-primary">{l s='Save' d='Shop.Theme.Actions'}</button>
+    <button type="button" class="btn btn-primary">{l s='Save' d='Shop.Theme.Actions'}</button>
     <a class="js-cancel-address cancel-address btn btn-link" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
   {else}
     <form>

@@ -106,7 +106,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-                            <span aria-hidden="true">&times;</span>
+                            <i class="material-icons">close</i>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -128,7 +128,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-                            <span aria-hidden="true">&times;</span>
+                            <i class="material-icons">close</i>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -144,6 +144,11 @@
         </div>
         {* end offcanvas menu *}
     {/block}
+
+    {block name='head_font'}
+      {include file="_partials/font-load.tpl"}
+    {/block}
+      
     {block name='javascript_bottom'}
       {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
     {/block}

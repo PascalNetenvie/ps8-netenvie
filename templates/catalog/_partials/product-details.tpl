@@ -1,8 +1,4 @@
-<div class="tab-pane fade{if !$product.description} show active{/if}"
-     id="product-details"
-     data-product="{$product.embedded_attributes|json_encode}"
-     role="tabpanel"
-  >
+
   {block name='product_reference'}
     {if isset($product_manufacturer->id)}
       <div class="product-manufacturer">
@@ -87,4 +83,3 @@
       </div>
     {/if}
   {/block}
-</div>

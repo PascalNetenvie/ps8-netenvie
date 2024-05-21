@@ -27,41 +27,143 @@ import prestashop from 'prestashop';
 import SlickSlider from './components/slick';
 
 $(document).ready(function () {
-  createProductSpin();
-  createInputFile();
-  let slickSlider = new SlickSlider();
+    console.log('ready product');
+    createProductSpin();
+    createInputFile();
+    //let slickSlider = new SlickSlider();
+    slickSliderProductInit();
 
-  prestashop.on('updatedProduct', function (event) {
-      createInputFile();
 
-
-      if (event && event.product_minimal_quantity) {
-      const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
-      const quantityInputSelector = '#quantity_wanted';
-      let quantityInput = $(quantityInputSelector);
-
-      // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
-      quantityInput.trigger('touchspin.updatesettings', {min: minimalProductQuantity});
+    if (prestashop.responsive.mobile) {
+        //$(".btn-zoom").hide();
+        console.log('zoom');
+        //$(".product-img img").parent().zoom();
+        $("#product-modal img").parent().zoom({magnify: 0.8});
     }
-    $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
-    $('.js-product-images-modal').replaceWith(event.product_images_modal);
-    slickSlider.init();
+
+    prestashop.on('updatedProduct', function (event) {
+        console.log('updatedProduct');
+        createInputFile();
 
 
+        if (event && event.product_minimal_quantity) {
+            const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
+            const quantityInputSelector = '#quantity_wanted';
+            let quantityInput = $(quantityInputSelector);
 
-  });
-
-
-  function createInputFile()
-  {
-    $('.js-file-input').on('change', (event) => {
-      let target, file;
-
-      if ((target = $(event.currentTarget)[0]) && (file = target.files[0])) {
-        $(target).prev().text(file.name);
-      }
+            // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
+            quantityInput.trigger('touchspin.updatesettings', {min: minimalProductQuantity});
+        }
+        $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
+        $('.js-product-images-modal').replaceWith(event.product_images_modal);
+        // slickSlider.init();
+        slickSliderProductInit();
     });
-  }
+
+
+    function slickSliderProductInit()
+    {
+        console.log('slickSliderProductInit');
+
+        $('.product-thumbs').slick({
+            asNavFor: '.products-imagescover',
+            prevArrow: '<button type="button" class="btn btn-link slick-prev slick-arrow"><i class="material-icons">expand_less</i></button>',
+            nextArrow: '<button type="button" class="btn btn-link slick-next slick-arrow"><i class="material-icons">expand_more</i></button>',
+            dots: false,
+            infinite: true,
+            speed: 300,
+            rows: 0,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            "focusOnSelect": true,
+            vertical: true,
+            verticalSwiping: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 2,
+                        vertical: false,
+                        verticalSwiping: false,
+                        prevArrow: '<button type="button" class="btn btn-link slick-prev slick-arrow"><i class="material-icons">chevron_left</i></button>',
+                        nextArrow: '<button type="button" class="btn btn-link slick-next slick-arrow"><i class="material-icons">chevron_right</i></button>'
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        vertical: false,
+                        verticalSwiping: false,
+                        prevArrow: '<button type="button" class="btn btn-link slick-prev slick-arrow"><i class="material-icons">chevron_left</i></button>',
+                        nextArrow: '<button type="button" class="btn btn-link slick-next slick-arrow"><i class="material-icons">chevron_right</i></button>'
+                    }
+                }
+            ]
+        });
+        $('.products-imagescover').slick({
+            asNavFor: '.product-thumbs',
+            prevArrow: '<button type="button" class="btn btn-link slick-prev slick-arrow"><i class="material-icons">chevron_left</i></button>',
+            nextArrow: '<button type="button" class="btn btn-link slick-next slick-arrow"><i class="material-icons">chevron_right</i></button>',
+            dots: false,
+            infinite: true,
+            speed: 300,
+            rows: 0,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            vertical: false,
+            verticalSwiping: false,
+        });
+
+        $('#js-slick-product').slick({
+            asNavFor: '.product-thumbs, .products-imagescover',
+            prevArrow: '<button type="button" class="btn btn-link slick-prev slick-arrow d-none d-md-flex"><i class="material-icons">chevron_left</i></button>',
+            nextArrow: '<button type="button" class="btn btn-link slick-next slick-arrow d-none d-md-flex"><i class="material-icons">chevron_right</i></button>',
+            dots: false,
+            infinite: true,
+            speed: 300,
+            rows: 0,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            vertical: false,
+            verticalSwiping: false,
+            swipe: false,
+        });
+
+        // On before slide change
+        /*
+         $('#js-slick-product').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+         console.log(nextSlide);
+         //$('.products-imagescover').slick('slickGoTo', nextSlide);
+         //$('.product-thumbs').slick('slickGoTo', nextSlide);
+         
+         });*/
+
+        $('.btn-zoom').on('click', function () {
+            console.log('btn-zoom click');
+            idImage = $(this).data('id-image');
+            numImage = $(this).data('num-image');
+            numSlide = $(this).parent().data('slick-index');
+            $('#js-slick-product').slick('slickGoTo', numSlide);
+            console.log('numImage : ' + numImage);
+            console.log('numSlide : ' + numSlide);
+            /*  $("#product-modal img.img-fluid").addClass('d-none').removeClass('current');
+             $("#product-modal img#image-" + idImage).removeClass('d-none').addClass('current');*/
+        });
+    }
+
+    function createInputFile()
+    {
+        $('.js-file-input').on('change', (event) => {
+            let target, file;
+
+            if ((target = $(event.currentTarget)[0]) && (file = target.files[0])) {
+                $(target).prev().text(file.name);
+            }
+        });
+    }
 
     function createProductSpin()
     {
@@ -86,12 +188,30 @@ $(document).ready(function () {
 
 });
 
-$(document).on('shown.bs.modal','#product-modal', function (e) {
+var idImage = 0;
+var numImage = 0;
+var numSlide = 0;
+
+
+
+$(document).on('shown.bs.modal', '#product-modal', function (e) {
+    console.log('shown #product-modal');
+    console.log('numImage : ' + numImage);
     $('#js-slick-product').resize();
 });
 
+$(document).on('click', '.next-image-modal', function (e) {
+    console.log('next-image-modal click');
+    $('#js-slick-product').slick('slickNext');
+});
+
+$(document).on('click', '.prev-image-modal', function (e) {
+    console.log('prev-image-modal click');
+    $('#js-slick-product').slick('slickPrev');
+});
+
 //add to cart loader
-$(document).on('click','.js-add-to-cart:enabled:not(.is--loading)',function(){
+$(document).on('click', '.js-add-to-cart:enabled:not(.is--loading)', function () {
     $(this).addClass('is--loading').attr("disabled", true);
 });
 prestashop.on('updateCart', function (event) {
@@ -103,7 +223,7 @@ prestashop.on('handleError', function (event) {
     $('.js-add-to-cart').attr("disabled", false);
 
 });
-function removeAddToCartLoader(){
+function removeAddToCartLoader() {
     $('.js-add-to-cart.is--loading').removeClass('is--loading');
 
 }

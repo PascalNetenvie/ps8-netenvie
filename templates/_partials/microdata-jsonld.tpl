@@ -112,7 +112,7 @@
     "name": "{$product.name}",
     "description": "{$page.meta.description}",
     "category": "{$product.category_name}",
-    {if isset($product.cover)}"image" :"{$product.cover.bySize.home_default.url}",{/if}
+    {if isset($product.cover)}"image" :"{$product.cover.bySize.pdt_300.url}",{/if}
     {if $product.reference}"sku": "{$product.reference}",{/if}
     {if $product.ean13}
       "gtin13": "{$product.ean13}",

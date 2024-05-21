@@ -1,0 +1,31 @@
+.product-img {
+    position: relative;
+}
+
+#product-modal {
+    text-align: center;
+
+    .modal-header {
+        border-bottom: 0;
+        background-color: #000;
+    }
+
+    .modal-body {
+        text-align: center;
+    }
+    img {
+        display: none;
+    }
+}
+.product-tabs {
+    .card-header,  .card-body {
+        padding: 1.25rem 1.25rem;
+    }
+    .card-header{
+    }
+    .card-body {
+        .fade {
+            opacity: 1;
+        }
+    }
+}

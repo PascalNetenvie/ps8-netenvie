@@ -23,7 +23,8 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 <div id="order-items" class="">
-  <div class="row">
+  <h4 class="h4 mt-3 d-block d-sm-none">{l s='Order items' d='Shop.Theme.Checkout'}</h4>
+  <div class="row d-none d-sm-row">
       {block name='order_items_table_head'}
         <h3 class="table__title-head col-md-6 col-12">{l s='Order items' d='Shop.Theme.Checkout'}</h3>
         <h3 class="table__title-head col-md-2 text-md-center _desktop-title">{l s='Unit price' d='Shop.Theme.Checkout'}</h3>
@@ -56,7 +57,7 @@
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
+                                  <i class="material-icons">close</i>
                                 </button>
                                 <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
                               </div>

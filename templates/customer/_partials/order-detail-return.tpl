@@ -78,7 +78,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-                              <span aria-hidden="true">&times;</span>
+                              <i class="material-icons">close</i>
                             </button>
                             <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
                           </div>
@@ -254,7 +254,7 @@
       </section>
       <footer class="form-footer">
         <input type="hidden" name="id_order" value="{$order.details.id}">
-        <button class="form-control-submit btn btn-primary" type="submit" name="submitReturnMerchandise">
+        <button class="form-control-submit btn btn-primary" type="button" name="submitReturnMerchandise">
           {l s='Request a return' d='Shop.Theme.Customeraccount'}
         </button>
       </footer>
