@@ -1,5 +1,5 @@
-name: classic-rocket-netenvie
-display_name: Classic Rocket Netenvie
+name: ps8-netenvie
+display_name: Classic Rocket Netenvie PS8
 version: 3.1.0
 author:
   name: "Netenvie"
@@ -83,7 +83,6 @@ global_settings:
         - ps_categorytree
         - ps_facetedsearch
       displaySearch:
-        - ps_searchbarjqauto
       displayProductAdditionalInfo:
         - ps_sharebuttons
       displayReassurance:
@@ -147,7 +146,3 @@ theme_settings:
     new-products: layout-left-column
     prices-drop: layout-left-column
     contact: layout-left-column
-
-dependencies:
-  modules:
-    - ps_searchbarjqauto

@@ -28,7 +28,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = (env, argv) => {
     const IS_DEV = argv.mode === "development";
@@ -60,9 +60,9 @@ module.exports = (env, argv) => {
                     include: [
                         path.join(__dirname, '')
                     ],
-                  use: {
-                    loader: 'babel-loader'
-                  }
+                    use: {
+                        loader: 'babel-loader'
+                    }
                 },
                 {
                     test: /\.s[ac]ss/,
@@ -77,9 +77,11 @@ module.exports = (env, argv) => {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                sourceMap: IS_DEV,
-                                plugins: function () {
-                                    return [autoprefixer]
+                                postcssOptions : {
+                                    sourceMap: IS_DEV,
+                                    plugins: function () {
+                                        return [autoprefixer]
+                                    }
                                 }
                             }
                         },
@@ -113,15 +115,15 @@ module.exports = (env, argv) => {
                 {
                     test: /\.css$/,
                     use: [{
-                        loader: 'style-loader',
-                        options: {sourceMap: IS_DEV}
-                    }, {
-                        loader: 'css-loader',
-                        options: {sourceMap: IS_DEV}
-                    }, {
-                        loader: 'postcss-loader',
-                        options: {sourceMap: IS_DEV}
-                    }]
+                            loader: 'style-loader',
+                            options: {sourceMap: IS_DEV}
+                        }, {
+                            loader: 'css-loader',
+                            options: {sourceMap: IS_DEV}
+                        }, {
+                            loader: 'postcss-loader',
+                            options: {sourceMap: IS_DEV}
+                        }]
                 }
             ]
         },
@@ -131,13 +133,13 @@ module.exports = (env, argv) => {
             jquery: 'jQuery'
         },
         optimization: {
-          minimize: true,
-          minimizer: [
+            minimize: true,
+            minimizer: [
                 new TerserPlugin({
                     parallel: true,
                     test: /\.js($|\?)/i,
-                    sourceMap: IS_DEV,
                     terserOptions: {
+                        sourceMap: IS_DEV,
                         compress: {
                             booleans: IS_PROD,
                             conditionals: IS_PROD,
@@ -158,14 +160,7 @@ module.exports = (env, argv) => {
                         }
                     }
                 }),
-                new OptimizeCSSAssetsPlugin({
-                    cssProcessorOptions: {
-                        map: {
-                            annotation: true,
-                            inline: IS_DEV
-                        }
-                    }
-               }),
+                new CssMinimizerPlugin(),
             ]
         },
         plugins: [
