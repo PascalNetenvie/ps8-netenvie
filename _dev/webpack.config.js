@@ -44,7 +44,7 @@ module.exports = (env, argv) => {
 
 
     return {
-        devtool: IS_DEV ? 'cheap-eval-source-map' : '',
+        devtool: 'eval-cheap-source-map',
         entry: {
             theme: ONLY_SASS ? _entrySass : _entry
         },

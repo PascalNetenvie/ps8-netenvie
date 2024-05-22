@@ -214,6 +214,7 @@ $(document).on('click', '.prev-image-modal', function (e) {
 $(document).on('click', '.js-add-to-cart:enabled:not(.is--loading)', function () {
     $(this).addClass('is--loading').attr("disabled", true);
 });
+/*
 prestashop.on('updateCart', function (event) {
     removeAddToCartLoader();
 
@@ -226,4 +227,4 @@ prestashop.on('handleError', function (event) {
 function removeAddToCartLoader() {
     $('.js-add-to-cart.is--loading').removeClass('is--loading');
 
-}
+}*/

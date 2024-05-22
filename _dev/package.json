@@ -4,8 +4,8 @@
   "description": "Tools to help while developing the Classic theme",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
-    "start": "webpack -p -w",
+    "build": "webpack --mode production",
+    "start": "webpack --mode production -w",
     "debug": "webpack --mode development --devtool source-map --watch",
     "sass": "webpack --mode development --onlysass true --devtool source-map --watch",
     "fulldebug": "webpack --mode development --debug --devtool source-map --output-pathinfo --display-chunks --display-error-details --watch --progress --colors"
