@@ -186,6 +186,7 @@ $(document).ready(function () {
             // Remove links that don't actually link to anything
             .not('[href="#"]')
             .not('[href*="#footer"]')
+            .not('.footer__title--mobile')
             /*
              .not('[href="#0"]')
              .not('[href="#bt_tabs-0"]')
