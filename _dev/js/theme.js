@@ -139,15 +139,6 @@ $(document).ready(function () {
                 $('body').css('padding-top', 0);
             }
         });
-        /*
-         var yourHeader = $('#header').height();
-         $(window).scroll(function () {
-         if ($(this).scrollTop() > (yourHeader)) {
-         yourNavigation.addClass(stickyDiv).removeClass(unStickyDiv);
-         } else if ($(this).scrollTop() < (yourHeader)) {
-         yourNavigation.addClass(unStickyDiv).removeClass(stickyDiv);
-         }
-         });*/
     }
 
     function MobileMenuOk() {
@@ -187,6 +178,7 @@ $(document).ready(function () {
             .not('[href="#"]')
             .not('[href*="#footer"]')
             .not('.footer__title--mobile')
+            .not('.noscroll')
             /*
              .not('[href="#0"]')
              .not('[href="#bt_tabs-0"]')
