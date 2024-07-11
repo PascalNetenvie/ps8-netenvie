@@ -34,7 +34,7 @@
                         {if $product.cover}
                             <img
                                 data-src = "{$product.cover.bySize.pdt_300.url}"
-                                alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name|truncate:30:'...'}{/if}"
+                                alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name}{/if}"
                                 data-full-size-image-url = "{$product.cover.large.url}"
                                 width="{$product.cover.bySize.pdt_300.width}"
                                 height="{$product.cover.bySize.pdt_300.height}"
@@ -50,7 +50,7 @@
                         {if isset($productimg[1])}
                             <img
                                 data-src = "{$link->getImageLink($product.link_rewrite,$product.id_product|cat:"-"|cat:$productimg[1].id_image, 'pdt_300')}"
-                                alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name|truncate:30:'...'}{/if}"
+                                alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name}{/if}"
                                 width="{$product.cover.bySize.pdt_300.width}"
                                 height="{$product.cover.bySize.pdt_300.height}"
                                 class="lazyload second-cover"
@@ -66,9 +66,9 @@
                 <div class="product-description product__card-desc">
                     {block name='product_name'}
                         {if in_array($page.page_name, ['best-sales','category','manufacturer','new-products','prices-drop','product-list','search','supplier'])}
-                            <h2 class="h3 product-title"><a href="{$product.canonical_url}">{$product.name|truncate:30:'...'}</a></h2>
+                            <h2 class="h3 product-title"><a href="{$product.canonical_url}">{$product.name}</a></h2>
                             {else}
-                            <p class="h3 product-title"><a href="{$product.canonical_url}">{$product.name|truncate:30:'...'}</a></p>
+                            <p class="h3 product-title"><a href="{$product.canonical_url}">{$product.name}</a></p>
                             {/if}
                         {/block}
                         {block name='product_reviews'}
