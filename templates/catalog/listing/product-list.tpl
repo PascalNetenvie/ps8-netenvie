@@ -35,6 +35,8 @@
       <h1 id="js-product-list-header" class="h2">{$listing.label}</h1>
     {/block}
 
+    {hook h="displayHeaderCategory"}
+    
     <section id="products">
       {if $listing.products|count}
 

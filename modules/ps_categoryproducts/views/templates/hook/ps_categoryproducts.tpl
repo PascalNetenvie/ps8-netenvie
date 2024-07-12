@@ -30,7 +30,13 @@
             {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
         {/if}
     </p>
-    <div class="products">
+    <div class="slick__arrow-large" {if $products > 6}data-slick={strip}
+         '{literal}{
+         "slidesToShow": 6,		
+         "prevArrow": "<button type=\"button\" class=\"btn btn-link slick-prev slick-arrow\"><img src=\"/themes/santons/assets/img/prev.svg\" width=\"19\" height=\"36\" alt=\"Précédent\"></button>",
+         "nextArrow": "<button type=\"button\" class=\"btn btn-link slick-next slick-arrow\"><img src=\"/themes/santons/assets/img/next.svg\" width=\"19\" height=\"36\" alt=\"Suivant\"></button>",	
+         "responsive": [{"breakpoint":1650,"settings":{"slidesToShow": 5}}, {"breakpoint":1450,"settings":{"slidesToShow": 4}}, {"breakpoint":1200,"settings":{"slidesToShow": 3}}, {"breakpoint":450,"settings":{"slidesToShow": 2}}, {"breakpoint":300,"settings":{"slidesToShow": 1}}]
+         }{/literal}'{/strip}{/if}>
         {foreach from=$products item="product"}
             {include file="catalog/_partials/miniatures/product.tpl" product=$product}
         {/foreach}

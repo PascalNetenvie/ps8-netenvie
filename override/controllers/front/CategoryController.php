@@ -54,7 +54,7 @@ class CategoryController extends CategoryControllerCore {
                 $this->context->smarty->assign('description2', '');
             }
             
-            $additional_description = $category['additional_additional_description'];
+            $additional_description = $category['additional_description'];
             $alls = explode('####', $additional_description);
             if (count($alls) == 2) {
                 $this->context->smarty->assign('additional_description1', $alls[0]);
@@ -68,7 +68,7 @@ class CategoryController extends CategoryControllerCore {
                 $this->context->smarty->assign('additional_description1', $additional_description);
                 $this->context->smarty->assign('additional_description2', '');
             }
-            
+
             $thumbUri = $this->getThumbnailImage($category['id']);
             $this->context->smarty->assign('thumbUri', $thumbUri);
         }
