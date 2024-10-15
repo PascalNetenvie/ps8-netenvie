@@ -39,13 +39,13 @@
                     <div class="">
                         <img
                             class="thumb js-thumb img-fluid"
-                            src="{$defaultImage.bySize.pdt_100.url}"
+                            src="{$defaultImage.bySize.pdt_180.url}"
                             alt="{$defaultImage.legend}" title="{$defaultImage.legend}"
-                            width="{$product.defaultImage.bySize.pdt_100.width}"
-                            height="{$product.defaultImage.bySize.pdt_100.height}"
+                            width="{$product.defaultImage.bySize.pdt_180.width}"
+                            height="{$product.defaultImage.bySize.pdt_180.height}"
                             >
                         <noscript>
-                        <img class="img-fluid" src="{$defaultImage.bySize.pdt_100.url}" alt="{$defaultImage.legend}">
+                        <img class="img-fluid" src="{$defaultImage.bySize.pdt_180.url}" alt="{$defaultImage.legend}">
                         </noscript>
                     </div>
                 </div>
@@ -53,17 +53,17 @@
                 {foreach from=$product.images item=image}
                     {if $image.id_image != $defaultImage.id_image}
                         <div class="product-thumb" id-image="{$image.id_image}">
-                            <div class="rc">
+                            <div class="">
                                 <img
-                                    class="thumb js-thumb lazyload img-fluid"
-                                    data-src="{$image.bySize.pdt_100.url}"
+                                    class="thumb js-thumb img-fluid"
+                                    src="{$image.bySize.pdt_180.url}"
                                     alt="{$image.legend}"
                                     title="{$image.legend}"
-                                    width="{$product.defaultImage.bySize.pdt_100.width}"
-                                    height="{$product.defaultImage.bySize.pdt_100.height}"
+                                    width="{$product.defaultImage.bySize.pdt_180.width}"
+                                    height="{$product.defaultImage.bySize.pdt_180.height}"
                                     >
                                 <noscript>
-                                <img class="img-fluid" src="{$image.bySize.pdt_100.url}" alt="{$image.legend}">
+                                <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
                                 </noscript>
                             </div>
                         </div>
@@ -74,17 +74,17 @@
                     {foreach from=$allImages item=image}
                         {if $image.id_image != $defaultImage.id_image}
                             <div class="product-thumb all" id-image="{$image.id_image}">
-                                <div class="rc">
+                                <div class="">
                                     <img
-                                        class="thumb js-thumb lazyload img-fluid"
-                                        data-src="{$image.bySize.pdt_100.url}"
+                                        class="thumb js-thumb img-fluid"
+                                        src="{$image.bySize.pdt_180.url}"
                                         alt="{$image.legend}"
                                         title="{$image.legend}"
-                                        width="{$product.defaultImage.bySize.pdt_100.width}"
-                                        height="{$product.defaultImage.bySize.pdt_100.height}"
+                                        width="{$product.defaultImage.bySize.pdt_180.width}"
+                                        height="{$product.defaultImage.bySize.pdt_180.height}"
                                         >
                                     <noscript>
-                                    <img class="img-fluid" src="{$image.bySize.pdt_100.url}" alt="{$image.legend}">
+                                    <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
                                     </noscript>
                                 </div>
                             </div>
