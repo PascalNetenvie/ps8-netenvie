@@ -24,28 +24,26 @@
 *}
 
 {assign var='numImage' value=0}
-{assign var='defaultImage' value=$product.default_image}   
+{assign var='defaultImage' value=$product.default_image}
 
 {if isset($allImages)}
-    {assign var='allImagesCount' value=$allImages|count }   
-{else} 
-    {assign var='allImagesCount' value=0}   
+    {assign var='allImagesCount' value=$allImages|count }
+{else}
+    {assign var='allImagesCount' value=0}
 {/if}
 <div class="images-container d-flex flex-wrap">
     {block name='product_images'}
         {if $product.images|count > 1 || $allImagesCount > 0}
-            <div class="col-lg-2 col-12 product-thumbs js-qv-product-images visible-desktop slick__arrow-outside order-2 order-lg-1" data-count="{$product.images|count + $allImagesCount}">
+            <div class="col-lg-2 col-12 product-thumbs js-qv-product-images visible-desktop slick__arrow-outside order-2 order-lg-1"
+                data-count="{$product.images|count + $allImagesCount}">
                 <div class="product-thumb slick-active">
                     <div class="">
-                        <img
-                            class="thumb js-thumb img-fluid"
-                            src="{$defaultImage.bySize.pdt_180.url}"
+                        <img class="thumb js-thumb img-fluid" src="{$defaultImage.bySize.pdt_180.url}"
                             alt="{$defaultImage.legend}" title="{$defaultImage.legend}"
                             width="{$product.defaultImage.bySize.pdt_180.width}"
-                            height="{$product.defaultImage.bySize.pdt_180.height}"
-                            >
+                            height="{$product.defaultImage.bySize.pdt_180.height}">
                         <noscript>
-                        <img class="img-fluid" src="{$defaultImage.bySize.pdt_180.url}" alt="{$defaultImage.legend}">
+                            <img class="img-fluid" src="{$defaultImage.bySize.pdt_180.url}" alt="{$defaultImage.legend}">
                         </noscript>
                     </div>
                 </div>
@@ -54,16 +52,11 @@
                     {if $image.id_image != $defaultImage.id_image}
                         <div class="product-thumb" id-image="{$image.id_image}">
                             <div class="">
-                                <img
-                                    class="thumb js-thumb img-fluid"
-                                    src="{$image.bySize.pdt_180.url}"
-                                    alt="{$image.legend}"
-                                    title="{$image.legend}"
-                                    width="{$product.defaultImage.bySize.pdt_180.width}"
-                                    height="{$product.defaultImage.bySize.pdt_180.height}"
-                                    >
+                                <img class="thumb js-thumb img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}"
+                                    title="{$image.legend}" width="{$product.defaultImage.bySize.pdt_180.width}"
+                                    height="{$product.defaultImage.bySize.pdt_180.height}">
                                 <noscript>
-                                <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
+                                    <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
                                 </noscript>
                             </div>
                         </div>
@@ -75,16 +68,11 @@
                         {if $image.id_image != $defaultImage.id_image}
                             <div class="product-thumb all" id-image="{$image.id_image}">
                                 <div class="">
-                                    <img
-                                        class="thumb js-thumb img-fluid"
-                                        src="{$image.bySize.pdt_180.url}"
-                                        alt="{$image.legend}"
-                                        title="{$image.legend}"
-                                        width="{$product.defaultImage.bySize.pdt_180.width}"
-                                        height="{$product.defaultImage.bySize.pdt_180.height}"
-                                        >
+                                    <img class="thumb js-thumb img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}"
+                                        title="{$image.legend}" width="{$product.defaultImage.bySize.pdt_180.width}"
+                                        height="{$product.defaultImage.bySize.pdt_180.height}">
                                     <noscript>
-                                    <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
+                                        <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
                                     </noscript>
                                 </div>
                             </div>
@@ -108,19 +96,22 @@
                     <div class="">
                         {if $defaultImage}
                             <img class="img-fluid"
-                                 srcset="{$defaultImage.bySize.pdt_540.url} 680w,{$defaultImage.bySize.pdt_360.url} 360w"
-                                 src="{$defaultImage.bySize.pdt_300.url}"
-                                 alt="{$defaultImage.legend}" title="{$defaultImage.legend}"
-                                 sizes="(min-width: 768px) 680px, (max-width: 767px) 320px"
-                                 width="320"
-                                 height="320"
-                                 alt="{$defaultImage.legend}" title="{$defaultImage.legend}">
+                                srcset="{$defaultImage.bySize.pdt_540.url} 680w,{$defaultImage.bySize.pdt_360.url} 360w"
+                                src="{$defaultImage.bySize.pdt_300.url}" alt="{$defaultImage.legend}"
+                                title="{$defaultImage.legend}" sizes="(min-width: 768px) 680px, (max-width: 767px) 320px"
+                                width="320" height="320" alt="{$defaultImage.legend}" title="{$defaultImage.legend}">
+                            <noscript>
+                                <img class="img-fluid" src="{$defaultImage.bySize.pdt_540.url}" alt="{$defaultImage.legend}">
+                            </noscript>
+                        {elseif isset($urls.no_picture_image)}
+                            <img class="lazyload" src="{$urls.no_picture_image.bySize.pdt_540.url}">
+                        {else}
+                            <img class="lazyload"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
                         {/if}
-                        <noscript>
-                        <img class="img-fluid" src="{$defaultImage.bySize.pdt_300.url}" alt="{$defaultImage.legend}">
-                        </noscript>
                     </div>
-                    <button data-id-image="{$defaultImage.id_image}" data-num-image="{$numImage}" type="button" class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
+                    <button data-id-image="{$defaultImage.id_image}" data-num-image="{$numImage}" type="button"
+                        class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
                         <i class="material-icons zoom-in">&#xE8FF;</i>
                     </button>
                 </div>
@@ -130,22 +121,19 @@
                         {$numImage = $numImage +1}
                         <div class="product-img" id-image="{$image.id_image}">
                             <div class="rc">
-                                <img
-                                    class="img-fluid lazyload"
-                                    {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto"{/if}
-                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
-                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}src="{$image.bySize.pdt_300.url}"
-                                    alt="{$image.legend}"
-                                    title="{$image.legend}"
-                                    sizes="(min-width: 768px) 680px, (max-width: 767px) 320px"
-                                    width="320"
-                                    height="320"
-                                    >
+                                <img class="img-fluid lazyload"
+                                    {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto" {/if}
+                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}
+                                    srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
+                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{$image.bySize.pdt_300.url}"
+                                    alt="{$image.legend}" title="{$image.legend}"
+                                    sizes="(min-width: 768px) 680px, (max-width: 767px) 320px" width="320" height="320">
                                 <noscript>
-                                <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
+                                    <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
                                 </noscript>
                             </div>
-                            <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button" class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
+                            <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button"
+                                class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
                                 <i class="material-icons zoom-in">&#xE8FF;</i>
                             </button>
                         </div>
@@ -159,22 +147,19 @@
 
                             <div class="product-img all" id-image="{$image.id_image}">
                                 <div class="rc">
-                                    <img
-                                        class="img-fluid lazyload"
-                                        {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto"{/if}
-                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
-                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}src="{$image.bySize.pdt_300.url}"
-                                        alt="{$image.legend}"
-                                        title="{$image.legend}"
-                                        sizes="(min-width: 768px) 680px, (max-width: 767px) 320px"
-                                        width="320"
-                                        height="320"
-                                        >
+                                    <img class="img-fluid lazyload"
+                                        {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto" {/if}
+                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}
+                                        srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
+                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{$image.bySize.pdt_300.url}"
+                                        alt="{$image.legend}" title="{$image.legend}"
+                                        sizes="(min-width: 768px) 680px, (max-width: 767px) 320px" width="320" height="320">
                                     <noscript>
-                                    <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
+                                        <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
                                     </noscript>
                                 </div>
-                                <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button" class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
+                                <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button"
+                                    class="btn btn-link btn-zoom product-layer-zoom" data-toggle="modal" data-target="#product-modal">
                                     <i class="material-icons zoom-in">&#xE8FF;</i>
                                 </button>
                             </div>
@@ -188,7 +173,6 @@
     {/block}
 
     {hook h='displayAfterProductThumbs'}
-
 
     <div class="modal fade" id="product-modal">
         <div class="modal-dialog modal-lg" role="document">
@@ -209,14 +193,17 @@
 
                         <div>
                             {if $defaultImage}
-                                <img id="image-{$defaultImage.id_image}" data-src="{$defaultImage.large.url}" class="img-fluid lazyload" width="{$defaultImage.large.width}" alt="{$defaultImage.legend}" title="{$defaultImage.legend}" />
+                                <img id="image-{$defaultImage.id_image}" data-src="{$defaultImage.large.url}"
+                                    class="img-fluid lazyload" width="{$defaultImage.large.width}"
+                                    alt="{$defaultImage.legend}" title="{$defaultImage.legend}" />
                             {/if}
                         </div>
 
                         {foreach from=$product.images item=image}
                             {if $image.id_image != $defaultImage.id_image}
                                 <div>
-                                    <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload" width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
+                                    <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload"
+                                        width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
                                 </div>
                             {/if}
                         {/foreach}
@@ -225,7 +212,8 @@
                             {foreach from=$allImages item=image}
                                 {if $image.id_image != $defaultImage.id_image}
                                     <div>
-                                        <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload" width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
+                                        <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload"
+                                            width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
                                     </div>
                                 {/if}
                             {/foreach}
