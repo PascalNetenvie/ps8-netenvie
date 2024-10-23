@@ -18,7 +18,7 @@
         {foreach from=$payment_options item="module_options"}
             {foreach from=$module_options item="option"}
                 <div>
-                    <div id="{$option.id}-container" class="payment-option clearfix">
+                    <div id="{$option.id}-container" class="payment-option {$option.module_name} clearfix">
                         {* This is the way an option should be selected when Javascript is enabled *}
                         <div class="custom-control custom-radio">
                             <input
@@ -53,7 +53,7 @@
                 {if $option.additionalInformation}
                     <div
                             id="{$option.id}-additional-information"
-                            class="mt-2 js-additional-information definition-list additional-information{if $option.id != $selected_payment_option} ps-hidden {/if}"
+                            class="{$option.module_name} mt-2 js-additional-information definition-list additional-information{if $option.id != $selected_payment_option} ps-hidden {/if}"
                     >
                         <div class="alert alert-info">
                             {$option.additionalInformation nofilter}
