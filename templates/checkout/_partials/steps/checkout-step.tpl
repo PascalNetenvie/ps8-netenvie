@@ -47,13 +47,12 @@
                 {else}
                     {$title}
                 {/if}
-
-                {if $step_is_reachable}
-                    <button class="step-edit btn btn-sm btn-primary btn-inverted float-right">
-                        {l s='Edit' d='Shop.Theme.Actions'}
-                    </button>
-                {/if}
             </h1>
+            {if $step_is_reachable}
+                <button class="step-edit btn btn-sm btn-primary btn-inverted float-right">
+                    {l s='Edit' d='Shop.Theme.Actions'}
+                </button>
+            {/if}
         </div>
         <div id="content-{$identifier}" class="collapse{if $step_is_current} show{/if}" aria-labelledby="heading-{$identifier}" data-parent="#js-checkout-process">
             <div class="content card-body">
