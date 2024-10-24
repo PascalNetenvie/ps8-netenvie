@@ -1,5 +1,5 @@
 
-# PrestaShop Netenvie Theme for PS8
+# PrestaShop 8 Netenvie Theme
 Based on Classic Rocket Netenvie (https://github.com/PascalNetenvie/classic-rocket-netenvie).
 
 New features of 2024 Netenvie PS8 :
