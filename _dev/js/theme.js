@@ -210,7 +210,6 @@ $(document).ready(function () {
                         // Only prevent default if animation is actually gonna happen
                         //event.preventDefault();
 
-
                         var scrollTop = target.offset().top - $('#header').height() - 40;
                         console.log('header height: ' + $('#header').height());
                         console.log('scrollTop : ' + scrollTop);
