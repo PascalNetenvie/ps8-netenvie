@@ -74,7 +74,7 @@
 
       <footer class="form-footer">
         <input type="hidden" name="id_order" value="{$order.details.id}">
-        <button type="button" name="submitMessage" class="btn btn-primary form-control-submit">
+        <button type="submit" name="submitMessage" class="btn btn-primary form-control-submit">
           {l s='Send' d='Shop.Theme.Actions'}
         </button>
       </footer>
