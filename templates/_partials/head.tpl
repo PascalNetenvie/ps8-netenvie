@@ -51,7 +51,10 @@
          <link rel="preload" as="image" href="{$preload}" />
       {/foreach}
   {/if}
-  
+
+  {block name='head_font'}
+    {include file="_partials/font-load.tpl"}
+  {/block}
   
   {if $page.page_name == 'product'}
     <link rel="canonical" href="{$product.canonical_url}">
