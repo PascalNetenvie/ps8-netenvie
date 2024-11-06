@@ -144,10 +144,6 @@
         </div>
         {* end offcanvas menu *}
     {/block}
-
-    {block name='head_font'}
-      {include file="_partials/font-load.tpl"}
-    {/block}
       
     {block name='javascript_bottom'}
       {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
