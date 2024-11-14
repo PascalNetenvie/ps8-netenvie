@@ -53,45 +53,40 @@ global_settings:
   modules:
    to_enable:
      - ps_linklist
-     - pm_advancedtopmenu
-     - prettyblocks
-     - homeproducttabs
    to_disable:
-     - ps_mainmenu
      - ps_searchbar
-     - ps_banner
   hooks:
     modules_to_hook:
-      displayBanner:
-        - prettyblocks
-        - ps_languageselector
       displayNav1:
-        - prettyblocks
-      displaySearch:
-        - ambjolisearch
+        - ps_contactinfo
       displayNav2:
-        - prettyblocks
+        - ps_languageselector
+        - ps_currencyselector
+      displayTop:
         - ps_customersignin
         - ps_shoppingcart
-      displayTop:
       displayNavFullWidth:
-        - pm_advancedtopmenu
+        - ps_mainmenu
       displayHome:
-        - prettyblocks
-        - homeproducttabs
+        - ps_imageslider
+        - ps_featuredproducts
+        - ps_banner
+        - ps_customtext
       displayFooterBefore:
-        - prettyblocks:
-            except_pages:
-              - index
+        - ps_emailsubscription
+        - ps_socialfollow
       displayFooter:
-        - prettyblocks
         - ps_linklist
         - ps_customeraccountlinks
-        - ps_emailsubscription
-      displayFooterAfter:
-        - prettyblocks
+        - ps_contactinfo
       displayLeftColumn:
+        - ps_categorytree
+        - ps_facetedsearch
+      displaySearch:
       displayProductAdditionalInfo:
+        - ps_sharebuttons
+      displayReassurance:
+        - blockreassurance
       displayOrderConfirmation2:
         - ps_featuredproducts
       displayCrossSellingShoppingCart:
