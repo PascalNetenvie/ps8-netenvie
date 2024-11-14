@@ -80,9 +80,7 @@ global_settings:
         - prettyblocks
         - homeproducttabs
       displayFooterBefore:
-        - prettyblocks:
-            except_pages:
-              - index
+        - prettyblocks
       displayFooter:
         - prettyblocks
         - ps_linklist
