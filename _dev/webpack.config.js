@@ -93,14 +93,14 @@ module.exports = (env, argv) => {
                         },
                     ]
                 },
-                {
+                /*{
                     test: /.(woff(2)?|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
                     exclude: /(im(a)?g(e)?)(s\b|\b)/,
                     loader: 'file-loader',
                     options: {
                         name: '../fonts/[name].[ext]'
                     }
-                },
+                },*/
                 {
                     test: /\.(png|jpe?g|gif|svg|webp)$/,
                     use: [
