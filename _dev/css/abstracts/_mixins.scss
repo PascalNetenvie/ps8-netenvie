@@ -1,12 +1,41 @@
-@mixin media-breakpoint-desktop() {
+@mixin media-breakpoint-xxxl() {
+  @include media-breakpoint-up(xxxl) {
+    @content;
+  }
+}
 
+@mixin media-breakpoint-xxl() {
+  @include media-breakpoint-up(xxl) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-xl() {
+  @include media-breakpoint-up(xl) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-desktop() {
   @include media-breakpoint-up(lg) {
     @content;
   }
 }
-@mixin media-breakpoint-mobile() {
 
+@mixin media-breakpoint-tablet() {
+  @include media-breakpoint-up(md) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-mobile() {
   @include media-breakpoint-down(md) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-smallmobile() {
+  @media (max-width: 320px) {
     @content;
   }
 }
@@ -19,4 +48,29 @@
 
 @function rem($pxValue) {
   @return #{stripUnit($pxValue) / stripUnit(16)}rem;
+}
+
+
+@mixin fullwidth-column-50($gutter) {
+  @include media-breakpoint-up(lg) {
+    padding-left: max(calc((100% - get-breakpoints("lg")) / 2 + $gutter), $gutter);
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-left: max(calc((100% - get-breakpoints("xl")) / 2 + $gutter), $gutter);
+  }
+
+  @include media-breakpoint-up(xxl) {
+    padding-left: max(calc((100% - get-breakpoints("xxl")) / 2 + $gutter), $gutter);
+  }
+
+  @include media-breakpoint-up(xxxl) {
+    padding-left: max(calc((100% - get-breakpoints("xxxl")) / 2 + $gutter), $gutter);
+  }
+
+  @content;
+}
+
+@function get-breakpoints($key: "md") {
+  @return map-get($container-max-widths, $key);
 }
