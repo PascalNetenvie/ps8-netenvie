@@ -22,7 +22,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-import $ from 'jquery';
+//import $ from 'jquery';
 
 export default class Form {
   init(){

@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 import prestashop from 'prestashop';
-import $ from 'jquery';
+//import $ from 'jquery';
 
 prestashop.blockcart = prestashop.blockcart || {};
 

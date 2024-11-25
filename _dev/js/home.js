@@ -31,12 +31,12 @@ import 'bootstrap/js/src/popover';
 import 'bootstrap/js/src/tab';
 import 'bootstrap/js/src/toast';
 import 'bootstrap/js/src/tooltip';
-import 'bootstrap-touchspin';
+//import 'bootstrap-touchspin';
 import './lib/slick.min';
 import './lib/jquery.hoverIntent.min';
 import SlickSlider from './components/slick';
-/*
 import './responsive';
+/*
 import './checkout';
 import './customer';
 import './listing';
@@ -89,8 +89,6 @@ $(document).ready(function () {
         scrollToAnchor(window.location.hash);
     }
 
-    FullWidth();
-
     if (($(location).attr("pathname") != "/commande") && ($(location).attr("pathname") != "/checkout")) {
         sticky();
         MobileMenuOk();
@@ -102,23 +100,6 @@ $(document).ready(function () {
             MobileMenuOk();
         }
     });
-
-    function FullWidth() {
-        $('.fullwidth').each(function () {
-            var content = $(this);
-            var fullwidth = $('body').width(),
-                    margin_full = fullwidth / 2;
-            //console.log(fullwidth);
-            //console.log(content);
-            content.css({
-                'left': '50%',
-                'position': 'relative',
-                'width': fullwidth,
-                'margin-left': -margin_full
-            });
-
-        });
-    }
 
     function sticky() {
         console.log('sticky');

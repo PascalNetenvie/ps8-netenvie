@@ -13,7 +13,7 @@
 
 /** MODULES **/
 @import "modules/prettyblocks";
-@import "modules/homeproducttabs";
+//@import "modules/homeproducttabs";
 
 
 /** LAYOUT **/
@@ -28,14 +28,13 @@
 @import "components/cart";
 @import "components/categories";
 @import "components/customer";
-@import "components/footer";
-@import "components/imageslider";
+//@import "components/imageslider";
 @import "components/offcanvas";
 @import "components/products";
-@import "components/searchbar";
+//@import "components/searchbar";
 
-@import "components/facet";
-@import "components/search-widget";
+//@import "components/facet";
+//@import "components/search-widget";
 @import "components/slick";
 @import "components/slick-theme";
 @import "components/productcomments";

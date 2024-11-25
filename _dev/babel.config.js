@@ -3,9 +3,9 @@ module.exports = {
     [
       "@babel/preset-env",
       {
-        targets: {
-          esmodules: true, // This targets modern browsers and disables class transformation
-        },
+        targets: "> 0.25%, not dead", // Cible les navigateurs actuels
+        useBuiltIns: "entry", // Charge les polyfills nécessaires
+        corejs: 3, // Utilise core-js version 3
       },
     ],
   ],
