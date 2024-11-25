@@ -1,0 +1,125 @@
+#hpprtb {
+    background-color: $secondary;
+    padding: 35px 0;
+
+    @include media-breakpoint-desktop {
+        padding: 70px 0 100px;
+    }
+
+    .nav-tabs {
+        border-bottom: 0;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+
+            a {
+                color: black;
+                font-weight: 300;
+                text-transform: uppercase;
+                display: inline-block;
+                white-space: nowrap;
+
+                font-size: rem(24px);
+                line-height: rem(24px);
+
+                @include media-breakpoint-desktop {
+                    font-size: rem(30px);
+                    line-height: rem(30px);
+                }
+
+
+                &.active {
+                    color: $primary;
+                    //text-decoration: underline;
+                    border-bottom: 2px solid $primary;
+                }
+            }
+        }
+    }
+
+    .tabs {
+
+        .tab-content {
+            padding-top: 25px;
+
+            @include media-breakpoint-desktop {
+                padding-top: 50px;
+                min-height: 428px;
+            }
+
+
+            .product__card-img {
+                border:  0
+            }
+            .card-body {
+                @include media-breakpoint-desktop {
+                    margin: 10px 25px 0;
+                }
+            }            
+            .tab-pane {
+                display: block;
+
+                &:not(.show) {
+                    overflow-y: hidden;
+                    height: 0;
+                }
+
+                .slick-slider {
+                    margin-left: -7.5px;
+                    margin-right: -7.5px;
+
+                    @include media-breakpoint-desktop {
+                        margin-left: -15px;
+                        margin-right: -15px;
+                    }
+
+                    @include media-breakpoint-xxl {
+                        margin-left: -20px;
+                        margin-right: -20px;
+                    }
+
+                    .slick-prev {
+                        transform: translateX(0);
+
+                        @include media-breakpoint-desktop {
+                            transform: translateX(-15px);
+                        }
+                        @include media-breakpoint-xxl {
+                            transform: translateX(-30px);
+                        }
+                    }
+
+                    .slick-next {
+                        transform: translateX(0);
+
+                        @include media-breakpoint-desktop {
+                            transform: translateX(15px);
+                        }
+                        @include media-breakpoint-xxl {
+                            transform: translateX(30px);
+                        }
+                    }
+
+                    .slick-slide {
+                        padding: 0 7.5px;
+
+                        @include media-breakpoint-desktop {
+                            padding: 0 20px;
+                        }
+
+                        >div {
+                            height: 100%;
+
+                            >article {
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

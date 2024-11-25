@@ -9,7 +9,11 @@
 @import "partials/bs_alpha";
 @import "partials/commons";
 @import "partials/lazysizes";
-@import "partials/prettyblocks";
+
+
+/** MODULES **/
+@import "modules/prettyblocks";
+@import "modules/homeproducttabs";
 
 
 /** LAYOUT **/

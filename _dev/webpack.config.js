@@ -1,28 +1,3 @@
-/**
- * 2007-2020 PrestaShop
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/OSL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to http://www.prestashop.com for more information.
- *
- * @author    PrestaShop SA <contact@prestashop.com>
- * @copyright 2007-2020 PrestaShop SA
- * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
- * International Registered Trademark & Property of PrestaShop SA
- */
-
 const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
@@ -33,21 +8,15 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = (env, argv) => {
     const IS_DEV = argv.mode === "development";
     const IS_PROD = argv.mode === "production";
-    const _entry = [
-        './js/theme.js',
-        './css/theme.scss'
-    ];
-    const _entrySass = [
-        './css/theme.scss'
-    ];
-    const ONLY_SASS = argv.onlysass === true;
 
+    const entries = {
+        theme: ['./js/theme.js', './css/theme.scss'],
+        themehome: ['./js/home.js']
+    };
 
     return {
         devtool: 'eval-cheap-source-map',
-        entry: {
-            theme: ONLY_SASS ? _entrySass : _entry
-        },
+        entry: entries,
         output: {
             path: path.resolve(__dirname, '../assets/js'),
             filename: '[name].js'
@@ -56,16 +25,13 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /\.js$/,
-                    // exclude: /(node_modules|bower_components)/,
-                    include: [
-                        path.join(__dirname, '')
-                    ],
+                    include: [path.join(__dirname, '')],
                     use: {
                         loader: 'babel-loader'
                     }
                 },
                 {
-                    test: /\.s[ac]ss/,
+                    test: /\.s[ac]ss$/,
                     use: [
                         {loader: MiniCssExtractPlugin.loader},
                         {
@@ -77,11 +43,9 @@ module.exports = (env, argv) => {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                postcssOptions : {
+                                postcssOptions: {
                                     sourceMap: IS_DEV,
-                                    plugins: function () {
-                                        return [autoprefixer]
-                                    }
+                                    plugins: () => [autoprefixer]
                                 }
                             }
                         },
@@ -90,17 +54,9 @@ module.exports = (env, argv) => {
                             options: {
                                 sourceMap: IS_DEV
                             }
-                        },
+                        }
                     ]
                 },
-                /*{
-                    test: /.(woff(2)?|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
-                    exclude: /(im(a)?g(e)?)(s\b|\b)/,
-                    loader: 'file-loader',
-                    options: {
-                        name: '../fonts/[name].[ext]'
-                    }
-                },*/
                 {
                     test: /\.(png|jpe?g|gif|svg|webp)$/,
                     use: [
@@ -114,16 +70,20 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.css$/,
-                    use: [{
+                    use: [
+                        {
                             loader: 'style-loader',
                             options: {sourceMap: IS_DEV}
-                        }, {
+                        },
+                        {
                             loader: 'css-loader',
                             options: {sourceMap: IS_DEV}
-                        }, {
+                        },
+                        {
                             loader: 'postcss-loader',
                             options: {sourceMap: IS_DEV}
-                        }]
+                        }
+                    ]
                 }
             ]
         },
@@ -152,8 +112,7 @@ module.exports = (env, argv) => {
                             reduce_vars: IS_PROD,
                             sequences: IS_PROD,
                             warnings: IS_DEV,
-                          ecma: 5,
-
+                            ecma: 5
                         },
                         output: {
                             comments: IS_DEV
@@ -175,5 +134,5 @@ module.exports = (env, argv) => {
         watchOptions: {
             ignored: /node_modules/
         }
-    }
-}
+    };
+};

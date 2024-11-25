@@ -60,6 +60,9 @@ global_settings:
      - ps_mainmenu
      - ps_searchbar
      - ps_banner
+     - blockreassurance
+     - ps_imageslider
+     - ps_featuredproducts
   hooks:
     modules_to_hook:
       displayBanner:

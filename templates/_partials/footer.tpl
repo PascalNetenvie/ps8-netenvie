@@ -22,13 +22,9 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<div class="container">
-  <div class="row">
-    {block name='hook_footer_before'}
-      {hook h='displayFooterBefore'}
-    {/block}
-  </div>
-</div>
+{block name='hook_footer_before'}
+  {hook h='displayFooterBefore'}
+{/block}
 <div class="footer-container">
   <div class="container">
     <div class="row">
@@ -36,17 +32,23 @@
         {hook h='displayFooter'}
       {/block}
     </div>
-    <div class="row">
-      {block name='hook_footer_after'}
-        {hook h='displayFooterAfter'}
+    {block name='hook_footer_after'}
+      {hook h='displayFooterAfter'}
+    {/block}
+  </div>
+</div>
+<div class="bottom-container">
+  <div class="container">
+    <div>
+      {block name='copyright_link'}
+        {l s='%copyright% %year% Netenvie - Tous droits réservés' sprintf=['%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
       {/block}
     </div>
-    <p class="text-center mb-0 pb-3">
-      {block name='copyright_link'}
-        <a class="_blank" href="https://prestarocket.com/" target="_blank" rel="nofollow">
-          {l s='%copyright% %year% - Theme by %prestashop%' sprintf=['%prestashop%' => 'Prestarocket™', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
-        </a>
-      {/block}
-    </p>
+    <div>
+      {l s='Webdesign : '}
+      <a href="https://www.netenvie.com/agence-prestashop-marseille.html" target="_blank">
+        {l s='Netenvie, agence Prestashop Marseille' d='Shop.Theme.Global'}
+      </a>
+    </div>
   </div>
 </div>
