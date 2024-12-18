@@ -52,16 +52,20 @@ global_settings:
     PS_IMAGE_QUALITY: png
   modules:
    to_enable:
-     - ps_linklist
      - pm_advancedtopmenu
+     - pm_advancedsearch4
+     - ambjolisearch
      - prettyblocks
+     - ps_linklist
      - homeproducttabs
+     - pm_advancedcookiebanner
    to_disable:
      - ps_mainmenu
+     - ps_facetedsearch
      - ps_searchbar
+     - ps_imageslider
      - ps_banner
      - blockreassurance
-     - ps_imageslider
      - ps_featuredproducts
   hooks:
     modules_to_hook:

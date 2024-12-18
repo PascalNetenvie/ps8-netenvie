@@ -40,8 +40,8 @@
                     <div class="">
                         <img class="thumb js-thumb img-fluid" src="{$defaultImage.bySize.pdt_180.url}"
                             alt="{$defaultImage.legend}" title="{$defaultImage.legend}"
-                            width="{$product.defaultImage.bySize.pdt_180.width}"
-                            height="{$product.defaultImage.bySize.pdt_180.height}">
+                            width="{$defaultImage.bySize.pdt_180.width}"
+                            height="{$defaultImage.bySize.pdt_180.height}">
                         <noscript>
                             <img class="img-fluid" src="{$defaultImage.bySize.pdt_180.url}" alt="{$defaultImage.legend}">
                         </noscript>
@@ -53,8 +53,8 @@
                         <div class="product-thumb" id-image="{$image.id_image}">
                             <div class="">
                                 <img class="thumb js-thumb img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}"
-                                    title="{$image.legend}" width="{$product.defaultImage.bySize.pdt_180.width}"
-                                    height="{$product.defaultImage.bySize.pdt_180.height}">
+                                    title="{$image.legend}" width="{$image.bySize.pdt_180.width}"
+                                    height="{$image.bySize.pdt_180.height}">
                                 <noscript>
                                     <img class="img-fluid" src="{$image.bySize.pdt_180.url}" alt="{$image.legend}">
                                 </noscript>

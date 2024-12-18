@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 //import $ from 'jquery';
-import prestashop from 'prestashop';
+//import prestashop from 'prestashop';
 
 prestashop.responsive = prestashop.responsive || {};
 

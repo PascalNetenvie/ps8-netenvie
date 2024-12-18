@@ -67,6 +67,64 @@ sup{
     margin-bottom: $spacer;
 }
 
+
+/* wishlist (NETENVIE) */
+
+.wishlist-container {
+    z-index: 1;
+    position: relative;
+}
+
+.wishlist-button-add.wishlist-button-product {
+    display: none;
+}
+.wishlist-delete,
+.wishlist-add-to,
+.wishlist-create,
+.wishlist-login,
+.wishlist-rename,
+.wishlist-share {
+    .modal-backdrop.fade {
+        display: none;
+    }
+}
+
+/* FIN wishlist (NETENVIE) */
+
+
+
+/* IMAGE (NETENVIE) */
+
+.bg-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cover,
+.bg-cover>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.md-cover {
+    max-width: 100%;
+
+    @include media-breakpoint-desktop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* FIN IMAGE (NETENVIE) */
+
+
 /* BACKGROUND (NETENVIE) */
 
 .bg-black {

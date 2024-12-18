@@ -11,7 +11,10 @@ module.exports = (env, argv) => {
 
     const entries = {
         theme: ['./js/theme.js', './css/theme.scss'],
-        themehome: ['./js/home.js', './css/home.scss']
+        themehome: ['./js/home.js', './css/home.scss'],
+        themecategory: ['./js/category.js'],
+        themeproduct: ['./js/product.js'],
+        themecheckout: ['./js/checkout.js']
     };
 
     return {
