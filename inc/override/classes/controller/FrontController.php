@@ -83,48 +83,6 @@ class FrontControllerTheme extends FrontControllerCore
         }
         return '';
     }
-    /**
-     * Initializes page header variables.
-     */
-    public function display()
-    {
-        $preloads = array();
-        $controllerClass = get_class($this->context->controller);
-        if ($controllerClass == 'IndexController') {
-            $zones = array('beforeHome', 'displayHome');
-            foreach ($zones as $zone) {
-                $find = false;
-                $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
-                $results = Db::getInstance()->executeS($sql);
-                $image_url = $this->getImageFromPrettyBlocks($results);
-                if ($image_url != '') {
-                    $preloads[] = $image_url;
-                    break;
-                }
-            }
-        } else if ($controllerClass == 'ProductController') {
-            $product = $this->context->smarty->getTemplateVars('product');
-            if (isset($product['default_image'])) {
-                $preloads[] = $product['default_image']['bySize']['pdt_540']['url'];
-            }
-        } else if ($controllerClass == 'CategoryController') {
-            $listing = $this->context->smarty->getTemplateVars('listing');
-
-            $i = 0;
-            foreach ($listing['products'] as $product) {
-                if (isset($product['cover'])) {
-                    $image_url = $product['cover']['bySize']['home_default']['url'];
-                    $preloads[] = $image_url;
-                    $i++;
-                    if ($i == 4) {
-                        break;
-                    }
-                }
-            }
-        }
-        $this->context->smarty->assign('preloads', $preloads);
-        parent::display();
-    }
 
     public function registerStylesheet($id, $relativePath, $params = [])
     {
@@ -310,16 +268,51 @@ class FrontControllerTheme extends FrontControllerCore
         }
         $this->javascriptManager->register($id, $relativePath, $params['position'], $params['priority'], $params['inline'], $params['attributes'], $params['server']);
     }
-
-
     public function display()
     {
-        $everpsblogposts = EverPsBlogPost::getPosts(
-            (int) $this->context->language->id,
-            (int) $this->context->shop->id/*,
+        $preloads = array();
+        $controllerClass = get_class($this->context->controller);
+        if ($controllerClass == 'IndexController') {
+            $zones = array('beforeHome', 'displayHome');
+            foreach ($zones as $zone) {
+                $find = false;
+                $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
+                $results = Db::getInstance()->executeS($sql);
+                $image_url = $this->getImageFromPrettyBlocks($results);
+                if ($image_url != '') {
+                    $preloads[] = $image_url;
+                    break;
+                }
+            }
+        } else if ($controllerClass == 'ProductController') {
+            $product = $this->context->smarty->getTemplateVars('product');
+            if (isset($product['default_image'])) {
+                $preloads[] = $product['default_image']['bySize']['pdt_540']['url'];
+            }
+        } else if ($controllerClass == 'CategoryController') {
+            $listing = $this->context->smarty->getTemplateVars('listing');
+
+            $i = 0;
+            foreach ($listing['products'] as $product) {
+                if (isset($product['cover'])) {
+                    $image_url = $product['cover']['bySize']['home_default']['url'];
+                    $preloads[] = $image_url;
+                    $i++;
+                    if ($i == 4) {
+                        break;
+                    }
+                }
+            }
+        }
+        $this->context->smarty->assign('preloads', $preloads);
+        if (class_exists('EverPsBlogPost')) {
+            $everpsblogposts = EverPsBlogPost::getPosts(
+                (int) $this->context->language->id,
+                (int) $this->context->shop->id/*,
 (int) $pagination['items_shown_from'] - 1*/
-        );
-        $this->context->smarty->assign('everpsblogposts', $everpsblogposts);
+            );
+            $this->context->smarty->assign('everpsblogposts', $everpsblogposts);
+        }
         parent::display();
     }
 

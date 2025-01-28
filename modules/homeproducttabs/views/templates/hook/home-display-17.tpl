@@ -73,7 +73,9 @@
 						{if $aTabs.sStyleCss == 'THEME'}
 							<div class="tab-pane fade in {if $smarty.foreach.aTabs.index|intval == 0}active show{/if}" id="step{$smarty.foreach.aTabs.index|intval}" aria-expanded="{if $smarty.foreach.aTabs.index|intval == 0}true{/if}">
 								{if isset($aTabs.aProductPresenter)}
-								<div class="sliderproduitstab slick__arrow-outside" {if $aTabs.aProductPresenter.length > 6}data-slick={strip}
+
+  								{assign var="productscount" value=$aTabs.aProductPresenter|count}
+								<div class="sliderproduitstab slick__arrow-outside" {if $productscount > 6}data-slick={strip}
 									 '{literal}{
 									 "slidesToShow": 6,		
 									 "prevArrow": "<button type=\"button\" class=\"btn btn-link slick-prev slick-arrow\"><img src=\"/themes/ps8-netenvie/assets/img/prev.svg\" width=\"19\" height=\"36\" alt=\"Précédent\"></button>",
