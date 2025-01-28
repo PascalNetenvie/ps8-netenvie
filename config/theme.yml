@@ -156,3 +156,102 @@ theme_settings:
     new-products: layout-left-column
     prices-drop: layout-left-column
     contact: layout-left-column
+
+opti_settings:
+  remove_jquery_ui_home_pm_advancedsearch4: true
+  ex_home_js: [
+            "everpsblog",
+            "fancybox",
+            "gallerique",
+            "gsnippetsreviews",
+            "loyaltyeditpoints",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "blockwishlist",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js",
+            "modules/sdevmonetico/views/js/front.js",
+            "blockwishlist"]
+  ex_cat_js: [
+            "an_instagramfeed",
+            "fancybox",
+            "gallerique",
+            "loyaltyeditpoints",
+            "ne_imageslider",
+            "ne_homesection",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_prod_js: [
+            "fancybox",
+            "gallerique",
+            "blockimgmosaic",
+            "ne_imageslider",
+            "ne_homesection",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "www.google.com/recaptcha",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_cat_js: [
+            "fancybox",
+            "gallerique",
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_home_css: [
+            "everpsblog",
+            "fancybox",
+            "gallerique",
+            //"gsnippetsreviews",
+            "loyaltyeditpoints",
+            "product",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "blockwishlist"]
+  ex_cat_css: [
+            "an_instagramfeed",
+            "fancybox",
+            "gallerique",
+            "loyaltyeditpoints",
+            "ne_imageslider",
+            "ne_homesection",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha"]
+  ex_prod_css: [
+            "fancybox",
+            "gallerique",
+            "blockimgmosaic",
+            "ne_imageslider",
+            "ne_homesection",
+            "pm_advancedsearch4",
+            "recaptchapro",
+            "www.google.com/recaptcha"]
+  ex_cat_css: [
+            "fancybox",
+            "gallerique",
+            "home",
+            "product",
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription"]

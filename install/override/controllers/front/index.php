@@ -1,3 +1,4 @@
+<?php
 /**
  * Copyright since 2007 PrestaShop SA and Contributors
  * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
@@ -22,46 +23,13 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
-const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = (env, argv) => {
-  const path = require('path');
-  const mode = argv.mode || 'production';
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
 
-  return {
-    mode,
-    entry: {
-      jquery: './js/jquery.js',
-      core: './js/coretheme.js',
-      home: './js/corehome.js',
-      product: './js/coreproduct.js',
-      category: './js/corecategory.js',
-      checkout: './js/corecheckout.js',
-    },
-    output: {
-      path: path.resolve(__dirname, '../../'), // Remonte à la racine du dossier themes
-      filename: '[name].js', // Nom dynamique basé sur les points d'entrée
-      chunkFilename: '[chunkhash]-chunk.js',
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          use: {
-            loader: 'esbuild-loader',
-          },
-        },
-      ],
-    },
-    externals: {
-      prestashop: 'prestashop',
-    },
-    devtool: mode === 'production' ? false : 'source-map',
-    optimization: {
-      minimize: true,
-      minimizer: [new TerserPlugin({
-        extractComments: false
-      })],
-    },
-  };
-};
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+header("Location: ../");
+exit;
