@@ -195,9 +195,10 @@ class FrontControllerTheme extends FrontControllerCore
 
         $ex_home = array(
             "core.js",
-            "theme.js",
             "@alma",
+            "theme.js",
         );
+        
         if (isset($this->themeSettings['opti_settings']['ex_home_js']) && is_array($this->themeSettings['opti_settings']['ex_home_js'])) {
             $ex_home = array_merge($ex_home, $this->themeSettings['opti_settings']['ex_home_js']);
         }

@@ -75,6 +75,7 @@
 								{if isset($aTabs.aProductPresenter)}
 
   								{assign var="productscount" value=$aTabs.aProductPresenter|count}
+								{$productscount}
 								<div class="sliderproduitstab slick__arrow-outside" {if $productscount > 6}data-slick={strip}
 									 '{literal}{
 									 "slidesToShow": 6,		

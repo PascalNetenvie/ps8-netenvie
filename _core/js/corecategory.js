@@ -38,10 +38,10 @@ import './listing';
 
 import {psShowHide} from './common';
 import initEmailFields from './email-idn';
-/*
+
 window.$ = $;
 window.jQuery = $;
-*/
+
 $(() => {
   psShowHide();
   initEmailFields('input[type="email"]');
