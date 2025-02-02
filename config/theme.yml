@@ -222,17 +222,6 @@ opti_settings:
             "www.google.com/recaptcha",
             "modules/pm_crosssellingoncart/views/js/front.js",
             "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
-  ex_cat_js: [
-            "fancybox",
-            "gallerique",
-            "ne_imageslider",
-            "ne_homesection",
-            "netreviews",
-            "pm_advancedsearch4",
-            "ps_emailalerts",
-            "ps_emailsubscription",
-            "modules/pm_crosssellingoncart/views/js/front.js",
-            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
   ex_home_css: [
             "everpsblog",
             "fancybox",
