@@ -255,14 +255,3 @@ opti_settings:
             "pm_advancedsearch4",
             "recaptchapro",
             "www.google.com/recaptcha"]
-  ex_cat_css: [
-            "fancybox",
-            "gallerique",
-            "home",
-            "product",
-            "ne_imageslider",
-            "ne_homesection",
-            "netreviews",
-            "pm_advancedsearch4",
-            "ps_emailalerts",
-            "ps_emailsubscription"]
