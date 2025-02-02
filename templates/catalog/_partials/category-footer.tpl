@@ -23,21 +23,40 @@
 * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
 *}
 <div id="js-product-list-footer">
-    {if $additional_description1}
-        <div class="category-additional-description">
-            {$additional_description1 nofilter}
-            {if $additional_description2}
-                <span class="lien" onclick="jQuery(this).hide();" data-toggle="collapse" data-target="#collapseAdditionalDescription2" aria-expanded="false" aria-controls="collapseExample">
-                    {l s='Read more' d='Shop.Theme.Catalog'}
-                </span>
-                <div class="collapse" id="collapseAdditionalDescription2">
-                    {$additional_description2 nofilter}
-                </div>
-            {/if}
-        </div>
-    {elseif isset($category) && $category.additional_description && $listing.pagination.items_shown_from == 1}
-        <div class="category-additional-description">
-            {$category.additional_description nofilter}
+
+    {if $category.image.large.url}
+        <div class="row block-category-footer" id="category-description">
+    {/if}
+
+        {if $category.image.large.url}
+            <div class="col-md-6 category-cover">
+                <img src="{$category.image.large.url}" class="lazyload"
+                    alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}">
+            </div>
+        {/if}
+
+        {if $additional_description1}
+            <div class="category-additional-description{if $category.image.large.url} col-md-6{/if}">
+                {$additional_description1 nofilter}
+                {if $additional_description2}
+                    <span class="lien" onclick="jQuery(this).hide();" data-toggle="collapse"
+                        data-target="#collapseAdditionalDescription2" aria-expanded="false" aria-controls="collapseExample">
+                        {l s='Read more' d='Shop.Theme.Catalog'}
+                    </span>
+                    <div class="collapse" id="collapseAdditionalDescription2">
+                        {$additional_description2 nofilter}
+                    </div>
+                {/if}
+            </div>
+        {elseif isset($category) && $category.additional_description && $listing.pagination.items_shown_from == 1}
+            <div class="category-additional-description{if $category.image.large.url} col-md-6{/if}">
+                {$category.additional_description nofilter}
+            </div>
+        {/if}
+
+    {if $category.image.large.url}
         </div>
     {/if}
+
+
 </div>
