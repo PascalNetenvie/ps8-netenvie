@@ -358,7 +358,7 @@ class FrontControllerTheme extends FrontControllerCore
     {
         $category = $this->context->smarty->getTemplateVars('category');
         if ($category) {
-            $description = $category['description'];
+            $description = $category->description;
             //var_dump($category);
             $alls = explode('<p>####</p>', $description);
             if (count($alls) == 2) {
@@ -385,7 +385,7 @@ class FrontControllerTheme extends FrontControllerCore
                 }
             }
 
-            $additional_description = $category['additional_description'];
+            $additional_description = $category->additional_description;
             $alls = explode('<p>####</p>', $additional_description);
             if (count($alls) == 2) {
                 $this->context->smarty->assign('additional_description1', $alls[0]);
@@ -417,7 +417,7 @@ class FrontControllerTheme extends FrontControllerCore
     {
         $category = $this->context->smarty->getTemplateVars('category');
         if ($category) {
-            $thumbUri = $this->getThumbnailImage($category['id']);
+            $thumbUri = $this->getThumbnailImage($category->id);
             $this->context->smarty->assign('thumbUri', $thumbUri);
         }
     }
