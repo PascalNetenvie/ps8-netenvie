@@ -6,19 +6,22 @@ use PrestaShop\PrestaShop\Core\Util\File\YamlParser;
 class FrontControllerTheme extends FrontControllerCore
 {
     var $themeSettings = [];
+    var $overrideSettings = [];
 
     public function init()
     {
         $configurationCacheDirectory = (new Configuration())->get('_PS_CACHE_DIR_');
         $yamlParser = new YamlParser($configurationCacheDirectory);
         $this->themeSettings = $yamlParser->parse(_PS_THEME_DIR_ . '/config/theme.yml');
-
+        $this->overrideSettings = $this->themeSettings['override_settings']['class_front_controller'];
+        /*
         $colorForCarac = array();
         $attributes = AttributeGroup::getAttributes($this->context->language->id, 157);
         foreach ($attributes as $attribute) {
             $colorForCarac[$attribute['name']] = $attribute['color'];
         }
         $this->context->smarty->assign('colorForCarac', $colorForCarac);
+        */
         parent::init();
     }
     /**
@@ -30,6 +33,10 @@ class FrontControllerTheme extends FrontControllerCore
      */
     public function addJqueryUI($component, $theme = 'base', $check_dependencies = true)
     {
+        if (isset($this->overrideSettings['remove_jquery_ui_override']) && $this->overrideSettings['remove_jquery_ui_override']) {
+            return parent::addJqueryUI($component, $theme, $check_dependencies);
+        }
+
         if (!is_array($component)) {
             $component = [$component];
         }
@@ -67,25 +74,12 @@ class FrontControllerTheme extends FrontControllerCore
         }
     }
 
-    public function getImageFromPrettyBlocks($results)
-    {
-        foreach ($results as $row) {
-            if ($row['code'] == 'slider_block') {
-                $states = json_decode($row['state'], true);
-                foreach ($states as $state) {
-                    if (isset($state['image'])) {
-                        if (isset($state['image']['value'])) {
-                            return $state['image']['value']['url'];
-                        }
-                    }
-                }
-            }
-        }
-        return '';
-    }
-
     public function registerStylesheet($id, $relativePath, $params = [])
     {
+        if (isset($this->overrideSettings['remove_register_stylesheet_override']) && $this->overrideSettings['remove_register_stylesheet_override']) {
+            return parent::registerStylesheet($id, $relativePath, $params);
+        }
+
         $ex_home = array(
             "@alma",
         );
@@ -156,6 +150,9 @@ class FrontControllerTheme extends FrontControllerCore
 
     public function registerJavascript($id, $relativePath, $params = [])
     {
+        if (isset($this->overrideSettings['remove_register_javascript_override']) && $this->overrideSettings['remove_register_javascript_override']) {
+            return parent::registerJavascript($id, $relativePath, $params);
+        }
         $modeDebug = isset($_GET['modeDebug']);
         $controllerClass = get_class($this->context->controller);
 
@@ -198,7 +195,7 @@ class FrontControllerTheme extends FrontControllerCore
             "@alma",
             "theme.js",
         );
-        
+
         if (isset($this->themeSettings['opti_settings']['ex_home_js']) && is_array($this->themeSettings['opti_settings']['ex_home_js'])) {
             $ex_home = array_merge($ex_home, $this->themeSettings['opti_settings']['ex_home_js']);
         }
@@ -247,7 +244,6 @@ class FrontControllerTheme extends FrontControllerCore
             }
         }
 
-
         //echo $relativePath . '<br />';
         if (!is_array($params)) {
             $params = [];
@@ -271,56 +267,91 @@ class FrontControllerTheme extends FrontControllerCore
     }
     public function display()
     {
-        $preloads = array();
-        $controllerClass = get_class($this->context->controller);
-        if ($controllerClass == 'IndexController') {
-            $zones = array('beforeHome', 'displayHome');
-            foreach ($zones as $zone) {
-                $find = false;
-                $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
-                $results = Db::getInstance()->executeS($sql);
-                $image_url = $this->getImageFromPrettyBlocks($results);
-                if ($image_url != '') {
-                    $preloads[] = $image_url;
-                    break;
+        if (isset($this->overrideSettings['remove_display_override']) && $this->overrideSettings['remove_display_override']) {
+            return parent::display();
+        }
+
+        if (isset($this->overrideSettings['display_override_preloads']) && $this->overrideSettings['display_override_preloads']) {
+            $preloads = array();
+            $controllerClass = get_class($this->context->controller);
+            if ($controllerClass == 'IndexController') {
+                $zones = array('beforeHome', 'displayHome');
+                foreach ($zones as $zone) {
+                    $find = false;
+                    $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
+                    $results = Db::getInstance()->executeS($sql);
+                    $image_url = $this->getImageFromPrettyBlocks($results);
+                    if ($image_url != '') {
+                        $preloads[] = $image_url;
+                        break;
+                    }
+                }
+            } else if ($controllerClass == 'ProductController') {
+                $product = $this->context->smarty->getTemplateVars('product');
+                if (isset($product['default_image'])) {
+                    $preloads[] = $product['default_image']['bySize']['pdt_540']['url'];
+                }
+            } else if ($controllerClass == 'CategoryController') {
+                $listing = $this->context->smarty->getTemplateVars('listing');
+
+                $i = 0;
+                foreach ($listing['products'] as $product) {
+                    if (isset($product['cover'])) {
+                        $image_url = $product['cover']['bySize']['home_default']['url'];
+                        $preloads[] = $image_url;
+                        $i++;
+                        if ($i == 4) {
+                            break;
+                        }
+                    }
                 }
             }
-        } else if ($controllerClass == 'ProductController') {
-            $product = $this->context->smarty->getTemplateVars('product');
-            if (isset($product['default_image'])) {
-                $preloads[] = $product['default_image']['bySize']['pdt_540']['url'];
-            }
-        } else if ($controllerClass == 'CategoryController') {
-            $listing = $this->context->smarty->getTemplateVars('listing');
+            $this->context->smarty->assign('preloads', $preloads);
+        }
 
-            $i = 0;
-            foreach ($listing['products'] as $product) {
-                if (isset($product['cover'])) {
-                    $image_url = $product['cover']['bySize']['home_default']['url'];
-                    $preloads[] = $image_url;
-                    $i++;
-                    if ($i == 4) {
-                        break;
+        if (isset($this->overrideSettings['display_override_everpsblogpost']) && $this->overrideSettings['display_override_everpsblogpost']) {
+            if (class_exists('EverPsBlogPost')) {
+                $everpsblogposts = EverPsBlogPost::getPosts(
+                    (int) $this->context->language->id,
+                    (int) $this->context->shop->id/*,(int) $pagination['items_shown_from'] - 1*/
+                );
+                $this->context->smarty->assign('everpsblogposts', $everpsblogposts);
+            }
+        }
+        return parent::display();
+    }
+
+
+    public function getImageFromPrettyBlocks($results)
+    {
+        foreach ($results as $row) {
+            if ($row['code'] == 'slider_block') {
+                $states = json_decode($row['state'], true);
+                foreach ($states as $state) {
+                    if (isset($state['image'])) {
+                        if (isset($state['image']['value'])) {
+                            return $state['image']['value']['url'];
+                        }
                     }
                 }
             }
         }
-        $this->context->smarty->assign('preloads', $preloads);
-        if (class_exists('EverPsBlogPost')) {
-            $everpsblogposts = EverPsBlogPost::getPosts(
-                (int) $this->context->language->id,
-                (int) $this->context->shop->id/*,
-(int) $pagination['items_shown_from'] - 1*/
-            );
-            $this->context->smarty->assign('everpsblogposts', $everpsblogposts);
-        }
-        parent::display();
+        return '';
     }
 
     public function initContent()
     {
-        parent::initContent();
-        $this->assignOtherDescriptions();
+        $res = parent::initContent();
+        if (isset($this->overrideSettings['remove_init_content_override']) && $this->overrideSettings['remove_init_content_override']) {
+            return $res;
+        }
+        if (isset($this->overrideSettings['init_content_override_cat_descriptions']) && $this->overrideSettings['init_content_override_cat_descriptions']) {
+            $this->assignOtherDescriptions();
+        }
+        if (isset($this->overrideSettings['init_content_override_cat_thumb_uri']) && $this->overrideSettings['init_content_override_cat_thumb_uri']) {
+            $this->assignThumbUri();
+        }
+        return $res;
     }
 
     public function assignOtherDescriptions()
@@ -379,12 +410,17 @@ class FrontControllerTheme extends FrontControllerCore
                     $this->context->smarty->assign('additional_description2', '');
                 }
             }
+        }
+    }
 
+    public function assignThumbUri()
+    {
+        $category = $this->context->smarty->getTemplateVars('category');
+        if ($category) {
             $thumbUri = $this->getThumbnailImage($category['id']);
             $this->context->smarty->assign('thumbUri', $thumbUri);
         }
     }
-
 
     /**
      * @param CategoryId $categoryId
@@ -395,7 +431,6 @@ class FrontControllerTheme extends FrontControllerCore
     {
         $image = _PS_CAT_IMG_DIR_ . $categoryId . '.jpg';
         $imageTypes = ImageType::getImagesTypes('categories');
-
 
         if (count($imageTypes) > 0) {
             $thumb = '';
@@ -411,6 +446,4 @@ class FrontControllerTheme extends FrontControllerCore
 
         return null;
     }
-
-
 }

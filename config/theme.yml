@@ -157,6 +157,28 @@ theme_settings:
     prices-drop: layout-left-column
     contact: layout-left-column
 
+override_settings:
+  class_front_controller:
+    remove_jquery_ui_override: false # optimisation chargement js jquery
+    remove_register_stylesheet_override: false # optimisation chargement js theme et core
+    remove_register_javascript_override: false # optimisation chargement css theme et core
+    remove_display_override: false
+    display_override_preloads: true # ajoute une variable smarty preloads en fonction du controller pour le header
+    display_override_everpsblogpost: true # ajoute une variable smarty everpsblogposts (liste des derniers posts)
+    remove_init_content_override: false
+    init_content_override_cat_descriptions: true # split la description de la catégorie (délimitateur)
+    init_content_override_cat_thumb_uri: true # ajout de la variable smarty thumbUri (image thumb de la catégorie)
+  class_manufacturer:
+    remove_get_manufacturers_override: true # ordonne les marques par la colonne ordre de la table manufacturer_custom
+  controller_product:
+    remove_init_content_override: false
+    init_content_override_cat_descriptions: true # split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
+    init_content_override_cat_thumb_uri: true # ajout de la variable smarty thumbUri (image thumb de la catégorie)
+    remove_display_ajax_refresh_override: false
+    display_ajax_refresh_override_product_descriptions: true # Ajax : split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
+  controller_listing_manufacturer:
+    remove_get_template_var_manufacturers_override: false # renvoie la liste des marques avec des infos en plus (fonctionnel ??)
+
 opti_settings:
   remove_jquery_ui_home_pm_advancedsearch4: true
   ex_home_js: [
