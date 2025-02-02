@@ -172,7 +172,7 @@ override_settings:
     remove_get_manufacturers_override: 1 # ordonne les marques par la colonne ordre de la table manufacturer_custom
   controller_product:
     remove_init_content_override: 0
-    init_content_override_cat_descriptions: 1 # split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
+    init_content_override_product_descriptions: 1 # split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
     init_content_override_product_all_images: 1 # ajout de la variable smarty allImages (toutes les images du produit)
     remove_display_ajax_refresh_override: 0
     display_ajax_refresh_override_product_descriptions: 1 # Ajax : split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)

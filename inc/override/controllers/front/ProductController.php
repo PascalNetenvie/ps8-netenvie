@@ -80,12 +80,6 @@ class ProductControllerTheme extends ProductControllerCore {
         if ($product_for_template) {
 			
 			$manufacturer = new Manufacturer( $product_for_template->id_manufacturer, $this->context->language->id);
-			/*
-              echo '<pre>';
-              var_dump($cat);
-              echo '</pre>';
-              die();
-			  */
 			$this->context->smarty->assign('manufacturername', $manufacturer->name);
 		
             $description = $product_for_template->description;
@@ -99,13 +93,11 @@ class ProductControllerTheme extends ProductControllerCore {
                 if ($i == 0) {
                     $this->context->smarty->assign('description', $all);
                 } else {
-
                     $otherDescription = explode('###', $all);
                     if (!count($otherDescription) > 1) {
                         $otherDescription = explode('##', $all);
                     }
                     if (count($otherDescription) > 1) {
-
                         $otherDescriptions[] = $otherDescription;
                     }
                 }

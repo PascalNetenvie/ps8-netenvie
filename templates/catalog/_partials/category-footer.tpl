@@ -24,19 +24,19 @@
 *}
 <div id="js-product-list-footer">
 
-    {if $category.image.large.url}
+    {if $category.image.large.url && isset($thumbUri)}
         <div class="row block-category-footer" id="category-description">
     {/if}
 
-        {if $category.image.large.url}
+        {if $category.image.large.url && isset($thumbUri)}
             <div class="col-md-6 category-cover">
                 <img src="{$category.image.large.url}" class="lazyload"
                     alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}">
             </div>
         {/if}
 
-        {if $additional_description1}
-            <div class="category-additional-description{if $category.image.large.url} col-md-6{/if}">
+        {if isset($additional_description1)}
+            <div class="category-additional-description{if $category.image.large.url && isset($thumbUri)} col-md-6{/if}">
                 {$additional_description1 nofilter}
                 {if $additional_description2}
                     <span class="lien" onclick="jQuery(this).hide();" data-toggle="collapse"
@@ -49,12 +49,12 @@
                 {/if}
             </div>
         {elseif isset($category) && $category.additional_description && $listing.pagination.items_shown_from == 1}
-            <div class="category-additional-description{if $category.image.large.url} col-md-6{/if}">
+            <div class="category-additional-description{if $category.image.large.url && isset($thumbUri)} col-md-6{/if}">
                 {$category.additional_description nofilter}
             </div>
         {/if}
 
-    {if $category.image.large.url}
+    {if $category.image.large.url && isset($thumbUri)}
         </div>
     {/if}
 
