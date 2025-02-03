@@ -44,6 +44,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerClass = get_class($this->context->controller);
 
         $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+        /* TODO : enlever dans produits */
         if ($controllerClass == 'IndexController' && str_contains($backtrace[0]['file'], 'pm_advancedsearch4')) {
             if (isset($this->themeSettings['remove_jquery_ui_home_pm_advancedsearch4']) && $this->themeSettings['remove_jquery_ui_home_pm_advancedsearch4']) {
                 return;
