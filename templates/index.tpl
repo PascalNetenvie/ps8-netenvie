@@ -33,17 +33,13 @@
     {block name="content_wrapper"}
         {hook h="displayContentWrapperTop"}
         {block name="content"}
-            {if is_prettyblocks_enabled}
-                {prettyblocks_zone zone_name="beforeHome"}
-            {/if}
+            {prettyblocks_zone zone_name="beforeHome"}
             {block name='content'}
                 {block name='hook_home'}
                     {$HOOK_HOME nofilter}
                 {/block}
             {/block}
-            {if is_prettyblocks_enabled}
-                {prettyblocks_zone zone_name="afterHome"}
-            {/if}
+            {prettyblocks_zone zone_name="afterHome"}
         {/block}
         {hook h="displayContentWrapperBottom"}
     {/block}
