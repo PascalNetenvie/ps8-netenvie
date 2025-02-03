@@ -2,10 +2,10 @@
 @import "bootstrap";
 @import "abstracts/mixins";
 @import "abstracts/variables";
-@import "partials/fonts";
 
 
 /** ALL **/
+@import "partials/fonts";
 @import "partials/bs_alpha";
 @import "partials/commons";
 @import "partials/lazysizes";
@@ -13,13 +13,12 @@
 
 /** MODULES **/
 @import "modules/prettyblocks";
-//@import "modules/homeproducttabs";
+@import "modules/homeproducttabs";
 
 
 /** LAYOUT **/
 @import "layout/header";
 @import "layout/footer";
-//@import "layout/mainmenu";
 
 
 /** COMPONENT **/
@@ -28,13 +27,9 @@
 @import "components/cart";
 @import "components/categories";
 @import "components/customer";
-//@import "components/imageslider";
 @import "components/offcanvas";
 @import "components/products";
-//@import "components/searchbar";
-
-//@import "components/facet";
-//@import "components/search-widget";
+@import "components/checkout";
 @import "components/slick";
 @import "components/slick-theme";
 @import "components/productcomments";

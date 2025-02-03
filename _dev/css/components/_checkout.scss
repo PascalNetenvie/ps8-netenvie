@@ -1,0 +1,158 @@
+.js-checkout-step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delivery-option {
+    background-color: lighten($secondary, 15%);
+    /* Secondary lighten 15% */
+}
+
+.payment-options>div {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.payment-options>div.ps-hidden {
+    min-height: 0px;
+    display: flex;
+}
+
+.payment-options>div>.payment-option {
+    display: flex;
+    align-items: center;
+    margin: 0px !important;
+}
+
+.payment-options>div>.payment-option .custom-control {
+    margin: 0px 6px 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.payment-options>div>.payment-option .custom-control-label::before,
+.payment-options>div>.payment-option .custom-control-label::after {
+    top: 0.15rem;
+}
+
+.payment-options>div>.payplugPaymentOption .custom-control-label::before,
+.payment-options>div>.payplugPaymentOption .custom-control-label::after {
+    top: 0.5rem;
+}
+
+.payment-options .alert.alert-info {
+    color: $primary;
+    /* Primary */
+    background-color: $secondary;
+    /* Secondary */
+    border-color: $primary;
+    /* Primary */
+    padding: 15px !important;
+}
+
+@media (min-width: 768px) {
+    .payment-options .alert.alert-info {
+        padding: 15px 35px !important;
+    }
+}
+
+/* Payplug */
+.payplugIntegratedPayment_container.-cardHolder,
+.payplugIntegratedPayment_container.-cvv,
+.payplugIntegratedPayment_container.-exp,
+.payplugIntegratedPayment_container.-pan {
+    background-color: rgba(255, 255, 255, 1.00) !important;
+}
+
+.payplugIntegratedPayment_container.-cardHolder,
+.payplugIntegratedPayment_container.-cvv,
+.payplugIntegratedPayment_container.-exp,
+.payplugIntegratedPayment_container.-pan {
+    border: 1px solid darken($secondary, 15%);
+    /* Secondary darken 15% */
+}
+
+.payplugIntegratedPayment_container.-cardHolder.-focus,
+.payplugIntegratedPayment_container.-cvv.-focus,
+.payplugIntegratedPayment_container.-exp.-focus,
+.payplugIntegratedPayment_container.-pan.-focus {
+    border: 1px solid $primary;
+    /* Primary */
+}
+
+.payplugIntegratedPayment_container.-cardHolder::before,
+.payplugIntegratedPayment_container.-cvv::before,
+.payplugIntegratedPayment_container.-exp::before,
+.payplugIntegratedPayment_container.-pan::before {
+    background-color: $primary !important;
+    /* Primary */
+}
+
+.payplugIntegratedPayment_container.-saveCard label {
+    color: #6f6565 !important;
+}
+
+/* Paypal */
+.payment-options .paypal.js-additional-information .alert.alert-info {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.payment-options .paypal.js-additional-information .alert.alert-info>* {
+    flex: 0 0 99%;
+}
+
+.payment-options .paypal.js-additional-information .alert.alert-info::after {
+    padding: 15px 5px;
+}
+
+body.lang-fr .payment-options .paypal.js-additional-information .alert.alert-info::after {
+    content: "Merci de valider les CGV (un peu plus bas)";
+}
+
+body.lang-en .payment-options .paypal.js-additional-information .alert.alert-info::after {
+    content: "Please validate the terms and conditions (a little further down).";
+}
+
+body.lang-es .payment-options .paypal.js-additional-information .alert.alert-info::after {
+    content: "Por favor, valide los términos y condiciones (un poco más abajo).";
+}
+
+body.lang-de .payment-options .paypal.js-additional-information .alert.alert-info::after {
+    content: "Bitte bestätigen Sie die AGB (etwas weiter unten).";
+}
+
+body.lang-it .payment-options .paypal.js-additional-information .alert.alert-info::after {
+    content: "Si prega di convalidare i termini e le condizioni (un po' più in basso).";
+}
+
+#conditions-to-approve .custom-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+#conditions-to-approve .custom-checkbox .custom-control-label::before,
+#conditions-to-approve .custom-checkbox .custom-control-label::after {
+    top: 0.15rem;
+}
+
+/* Oder conf */
+#order-confirmation .card {
+    border: none !important;
+}
+
+#order-confirmation #order-details {
+    border: none !important;
+    padding: 2.25rem;
+    background: $primary;
+    color: #fff;
+}
+
+#content-hook_payment_return {
+    background-color: lighten($secondary, 15%);
+    /* Secondary lighten 15% */
+}
