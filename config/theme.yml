@@ -180,7 +180,7 @@ override_settings:
     remove_get_template_var_manufacturers_override: 0 # renvoie la liste des marques avec des infos en plus (fonctionnel ??)
 
 opti_settings:
-  remove_jquery_ui_home_pm_advancedsearch4: true
+  remove_jquery_ui_home_pm_advancedsearch4: true # suprrimer le charguemetn de jquery-ui en home par advancedsearch4
   ex_home_js: [
             "everpsblog",
             "fancybox",
@@ -222,6 +222,13 @@ opti_settings:
             "www.google.com/recaptcha",
             "modules/pm_crosssellingoncart/views/js/front.js",
             "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_cde_js: [
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription"]
   ex_home_css: [
             "everpsblog",
             "fancybox",
@@ -255,3 +262,10 @@ opti_settings:
             "pm_advancedsearch4",
             "recaptchapro",
             "www.google.com/recaptcha"]
+  ex_cde_css: [
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription"]

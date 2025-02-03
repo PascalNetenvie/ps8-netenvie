@@ -277,13 +277,15 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $zones = array('beforeHome', 'displayHome');
                 foreach ($zones as $zone) {
-                    $find = false;
-                    $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
-                    $results = Db::getInstance()->executeS($sql);
-                    $image_url = $this->getImageFromPrettyBlocks($results);
-                    if ($image_url != '') {
-                        $preloads[] = $image_url;
-                        break;
+                    if (Module::isEnabled('prettyblocks')) {
+                        $find = false;
+                        $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
+                        $results = Db::getInstance()->executeS($sql);
+                        $image_url = $this->getImageFromPrettyBlocks($results);
+                        if ($image_url != '') {
+                            $preloads[] = $image_url;
+                            break;
+                        }
                     }
                 }
             } else if ($controllerClass == 'ProductController') {

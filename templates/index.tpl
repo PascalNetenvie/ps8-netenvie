@@ -33,13 +33,13 @@
     {block name="content_wrapper"}
         {hook h="displayContentWrapperTop"}
         {block name="content"}
-            {prettyblocks_zone zone_name="beforeHome"}
+            {*prettyblocks_zone zone_name="beforeHome"*}
             {block name='content'}
                 {block name='hook_home'}
                     {$HOOK_HOME nofilter}
                 {/block}
             {/block}
-            {prettyblocks_zone zone_name="afterHome"}
+            {*prettyblocks_zone zone_name="afterHome"*}
         {/block}
         {hook h="displayContentWrapperBottom"}
     {/block}
