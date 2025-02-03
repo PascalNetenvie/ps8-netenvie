@@ -91,21 +91,21 @@ class FrontControllerTheme extends FrontControllerCore
             "@alma",
         );
         if (isset($this->themeSettings['opti_settings']['ex_cat_css']) && is_array($this->themeSettings['opti_settings']['ex_cat_css'])) {
-            $ex_cat = array_merge($ex_home, $this->themeSettings['opti_settings']['ex_cat_css']);
+            $ex_cat = array_merge($ex_cat, $this->themeSettings['opti_settings']['ex_cat_css']);
         }
 
         $ex_prod = array(
             "@alma",
         );
         if (isset($this->themeSettings['opti_settings']['ex_prod_css']) && is_array($this->themeSettings['opti_settings']['ex_prod_css'])) {
-            $ex_prod = array_merge($ex_home, $this->themeSettings['opti_settings']['ex_prod_css']);
+            $ex_prod = array_merge($ex_prod, $this->themeSettings['opti_settings']['ex_prod_css']);
         }
 
         $ex_cde = array(
             "@alma",
         );
         if (isset($this->themeSettings['opti_settings']['ex_cde_css']) && is_array($this->themeSettings['opti_settings']['ex_cde_css'])) {
-            $ex_cde = array_merge($ex_home, $this->themeSettings['opti_settings']['ex_cde_css']);
+            $ex_cde = array_merge($ex_cde, $this->themeSettings['opti_settings']['ex_cde_css']);
         }
 
         $controllerExcludesCss = array();
@@ -126,6 +126,7 @@ class FrontControllerTheme extends FrontControllerCore
                 }
             }
         }
+        return parent::registerStylesheet($id, $relativePath, $params);
 
         if (!is_array($params)) {
             $params = [];
