@@ -271,6 +271,8 @@ class FrontControllerTheme extends FrontControllerCore
             return parent::display();
         }
 
+        $this->context->smarty->assign('is_prettyblocks_enabled', Module::isEnabled('prettyblocks'));
+
         if (isset($this->overrideSettings['display_override_preloads']) && $this->overrideSettings['display_override_preloads']) {
             $preloads = array();
             $controllerClass = get_class($this->context->controller);
