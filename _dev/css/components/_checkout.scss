@@ -1,3 +1,179 @@
+/* CHECKOUT STEP */
+
+.order-checkout .card-body {
+    padding-bottom: 0;
+
+}
+
+.step-edit[aria-expanded="true"] {
+    display: none;
+}
+
+.contact-rich {
+    @include media-breakpoint-mobile {
+        text-align: center;
+    }
+}
+
+.step-title {
+    margin-bottom: 0;
+    line-height: rem(26px);
+
+    i {
+        top: 4px;
+        position: relative;
+    }
+
+    @include media-breakpoint-mobile {
+        font-size: 0.9rem;
+    }
+
+    &.not-allowed {
+        margin-left: 20px;
+        ;
+    }
+}
+
+.-complete.-reachable .step-title .done {
+    display: inline-block;
+}
+
+
+//Personnal info
+.nav-tabs-info {
+
+    @include media-breakpoint-mobile() {
+        font-size: 0.85rem;
+    }
+
+    .active {
+        font-weight: bold;
+    }
+}
+
+//Résumé commande
+
+#order-summary-content {
+    .h4 {
+        margin: 1.5rem 0 10px;
+    }
+
+    .logo-container {
+        img {
+            max-height: 48px !important;
+            width: auto !important;
+        }
+    }
+
+    table {
+        td {
+            vertical-align: middle;
+        }
+    }
+}
+
+//Addresses
+
+.address-selector {
+    .card {
+        transition: border 0.1s linear;
+
+    }
+
+    .card-header,
+    .card-body {
+        cursor: pointer;
+
+    }
+}
+
+.card-body_add-address {
+    padding: $card-spacer-y $card-spacer-x;
+
+    .material-icons {
+        opacity: .8;
+    }
+}
+
+// Shipping
+
+.delivery-option {
+    cursor: pointer;
+    padding: $spacer;
+    margin-bottom: $spacer;
+    background-color: $gray-200;
+    display: block;
+
+    >.row {
+        align-items: center;
+    }
+}
+
+#js-delivery {
+    .delivery-option {
+        img {
+            max-width: 100% !important;
+        }
+    }
+}
+
+.carrier-extra-content:not(:empty) {
+    margin-bottom: $spacer*2;
+
+    &:empty {
+        display: none;
+    }
+}
+
+.carrier-name {
+    font-weight: $font-weight-bold;
+
+    @include media-breakpoint-mobile {
+        font-size: 0.85rem;
+        line-height: 1.25;
+    }
+}
+
+.carrier-delay {
+    @include media-breakpoint-mobile {
+        font-size: 0.85rem;
+        line-height: 1.25;
+    }
+}
+
+.carrier-price {
+    font-weight: bold;
+    font-size: $font-size-lg;
+    color: $primary;
+
+    @include media-breakpoint-mobile {
+        font-size: 1.05rem;
+    }
+}
+
+//order list final recap
+.order-line:not(:last-child) {
+    margin-bottom: $spacer/2;
+}
+
+.order-confirmation-table {
+    padding: $spacer;
+    border: 3px solid $card-border-color;
+}
+
+.payment-option {
+    margin-bottom: 10px;
+}
+
+.addresshead {
+    margin-bottom: 0;
+}
+
+#content-checkout-payment-step .alert-info {
+    padding: 3px 10px;
+}
+
+
 .js-checkout-step-header {
     display: flex;
     justify-content: space-between;
