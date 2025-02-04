@@ -283,9 +283,11 @@ class FrontControllerTheme extends FrontControllerCore
                         $find = false;
                         $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
                         $results = Db::getInstance()->executeS($sql);
-                        $image_url = $this->getImageFromPrettyBlocks($results);
-                        if ($image_url != '') {
-                            $preloads[] = $image_url;
+                        $images = $this->getImagesFromPrettyBlocks($results);
+                        if($images && is_array($images)) {
+                            foreach($images as $image_url) {
+                                $preloads[] = $image_url;
+                            }
                             break;
                         }
                     }
@@ -326,21 +328,27 @@ class FrontControllerTheme extends FrontControllerCore
     }
 
 
-    public function getImageFromPrettyBlocks($results)
+    public function getImagesFromPrettyBlocks($results)
     {
+        $images = [];
         foreach ($results as $row) {
             if ($row['code'] == 'slider_block') {
                 $states = json_decode($row['state'], true);
                 foreach ($states as $state) {
                     if (isset($state['image'])) {
                         if (isset($state['image']['value'])) {
-                            return $state['image']['value']['url'];
+                            $images[] = $state['image']['value']['url'];
+                        }
+                    }
+                    if (isset($state['imagemobile'])) {
+                        if (isset($state['imagemobile']['value'])) {
+                            $images[] = $state['imagemobile']['value']['url'];
                         }
                     }
                 }
             }
         }
-        return '';
+        return $images;
     }
 
     public function initContent()
