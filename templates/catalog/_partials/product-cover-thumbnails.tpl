@@ -91,7 +91,7 @@
                 {include file='catalog/_partials/product-flags.tpl'}
             {/block}
             <div class="products-imagescover mb-2" data-count="{$product.images|count + $allImagesCount}">
-                <div class="product-img thumbnail-container">
+                <div class="product-img">
                     <div class="">
                         {if $defaultImage}
                             <img class="img-fluid"
