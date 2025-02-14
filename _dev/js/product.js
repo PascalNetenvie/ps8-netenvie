@@ -40,7 +40,7 @@ import './lib/slick.min';
 import './lib/jquery.hoverIntent.min';
 import SlickSlider from './components/slick';
 
-//import  '../node_modules/jquery-zoom/jquery.zoom.min.js';
+import  '../node_modules/jquery-zoom/jquery.zoom.min.js';
 
 //import './checkout';
 //import './customer';
