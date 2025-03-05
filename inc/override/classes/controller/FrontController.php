@@ -42,7 +42,6 @@ class FrontControllerTheme extends FrontControllerCore
         }
 
         $controllerClass = get_class($this->context->controller);
-
         $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
         /* TODO : enlever dans produits */
         if ($controllerClass == 'IndexController' && str_contains($backtrace[0]['file'], 'pm_advancedsearch4')) {
@@ -112,6 +111,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesCss = array();
         $controllerExcludesCss['IndexController'] = $ex_home;
         $controllerExcludesCss['CategoryController'] = $ex_cat;
+        $controllerExcludesCss['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
         $controllerExcludesCss['ProductController'] = $ex_prod;
         $controllerExcludesCss['CartController'] = $ex_cde;
         $controllerClass = get_class($this->context->controller);
@@ -165,7 +165,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('home', '/themes/home.js', ['position' => 'bottom', 'priority' => 50]);
             }
-            if ($controllerClass == 'CategoryController') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('category', '/themes/category.js', ['position' => 'bottom', 'priority' => 50]);
             }
             if ($controllerClass == 'ProductController') {
@@ -181,7 +181,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('themehome', '/assets/js/themehome.js', ['position' => 'bottom', 'priority' => 51]);
             }
-            if ($controllerClass == 'CategoryController') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('themecategory', '/assets/js/themecategory.js', ['position' => 'bottom', 'priority' => 51]);
             }
             if ($controllerClass == 'ProductController') {
@@ -229,6 +229,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesJs = array();
         $controllerExcludesJs['IndexController'] = $ex_home;
         $controllerExcludesJs['CategoryController'] = $ex_cat;
+        $controllerExcludesJs['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
         $controllerExcludesJs['ProductController'] = $ex_prod;
         $controllerExcludesJs['CartController'] = $ex_cde;
         $controllerClass = get_class($this->context->controller);
