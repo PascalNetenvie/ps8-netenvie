@@ -4,7 +4,7 @@
             <span class="small"> - Page {$smarty.get.page}</span>{/if}
         </h1>
     </div>
-    {if ($category.description || isset($description1) || $category.image.large.url || isset($thumbUri)) && $listing.pagination.items_shown_from == 1}
+    {if ($category.description || isset($description1) || $category.image.bySize.large_default.url || isset($thumbUri)) && $listing.pagination.items_shown_from == 1}
         <div class="d-flex">
             {if isset($description1) }
                 <div id="category-description" class="text-muted">
@@ -27,9 +27,9 @@
                     <img src="{$thumbUri}" class="lazyload"
                         alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}">
                 </div>
-            {elseif $category.image.large.url}
+            {elseif $category.image.bySize.large_default.url}
                 <div class="category-cover">
-                    <img src="{$category.image.large.url}" class="lazyload"
+                    <img src="{$category.image.bySize.large_default.url}" class="lazyload"
                         alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}">
                 </div>
             {/if}
