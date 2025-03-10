@@ -35,7 +35,7 @@
                             <img
                                 data-src = "{$product.cover.bySize.pdt_300.url}"
                                 alt = "{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name}{/if}"
-                                data-full-size-image-url = "{$product.cover.large.url}"
+                                data-full-size-image-url = "{$product.cover.bySize.large_default.url}"
                                 width="{$product.cover.bySize.pdt_300.width}"
                                 height="{$product.cover.bySize.pdt_300.height}"
                                 class="lazyload"

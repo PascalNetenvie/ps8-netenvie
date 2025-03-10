@@ -192,8 +192,8 @@
 
                         <div>
                             {if $defaultImage}
-                                <img id="image-{$defaultImage.id_image}" data-src="{$defaultImage.large.url}"
-                                    class="img-fluid lazyload" width="{$defaultImage.large.width}"
+                                <img id="image-{$defaultImage.id_image}" data-src="{$defaultImage.bySize.large_default.url}"
+                                    class="img-fluid lazyload" width="{$defaultImage.bySize.large_default.width}"
                                     alt="{$defaultImage.legend}" title="{$defaultImage.legend}" />
                             {/if}
                         </div>
@@ -201,8 +201,8 @@
                         {foreach from=$product.images item=image}
                             {if $image.id_image != $defaultImage.id_image}
                                 <div>
-                                    <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload"
-                                        width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
+                                    <img id="image-{$image.id_image}" data-src="{$image.bySize.large_default.url}" class="img-fluid lazyload"
+                                        width="{$image.bySize.large_default.width}" alt="{$image.legend}" title="{$image.legend}" />
                                 </div>
                             {/if}
                         {/foreach}
@@ -211,8 +211,8 @@
                             {foreach from=$allImages item=image}
                                 {if $image.id_image != $defaultImage.id_image}
                                     <div>
-                                        <img id="image-{$image.id_image}" data-src="{$image.large.url}" class="img-fluid lazyload"
-                                            width="{$image.large.width}" alt="{$image.legend}" title="{$image.legend}" />
+                                        <img id="image-{$image.id_image}" data-src="{$image.bySize.large_default.url}" class="img-fluid lazyload"
+                                            width="{$image.bySize.large_default.width}" alt="{$image.legend}" title="{$image.legend}" />
                                     </div>
                                 {/if}
                             {/foreach}
