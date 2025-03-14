@@ -38,8 +38,12 @@
 
 @media (max-width: 767.98px) {
   #layout-error .logo img {
+    max-width: 75%;
+    height:auto;}
+  #layout-error #content img {
     max-width: 99%;
-    height:auto;} }
+    height:auto;}
+}
 @media (min-width: 768px) {
   #layout-error {
     width: 500px; } }
