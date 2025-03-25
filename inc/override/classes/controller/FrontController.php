@@ -285,8 +285,8 @@ class FrontControllerTheme extends FrontControllerCore
                         $sql = "SELECT * FROM `" . _DB_PREFIX_ . "prettyblocks` WHERE `zone_name` = '" . $zone . "' AND `id_lang` = " . $this->context->language->id . " ORDER BY `position` ASC;";
                         $results = Db::getInstance()->executeS($sql);
                         $images = $this->getImagesFromPrettyBlocks($results);
-                        if($images && is_array($images)) {
-                            foreach($images as $image_url) {
+                        if ($images && is_array($images)) {
+                            foreach ($images as $image_url) {
                                 $preloads[] = $image_url;
                             }
                             break;
@@ -336,14 +336,16 @@ class FrontControllerTheme extends FrontControllerCore
             if ($row['code'] == 'slider_block') {
                 $states = json_decode($row['state'], true);
                 foreach ($states as $state) {
-                    if (isset($state['image'])) {
-                        if (isset($state['image']['value'])) {
-                            $images[] = $state['image']['value']['url'];
+                    if (is_array($state)) {
+                        if (isset($state['image'])) {
+                            if (isset($state['image']['value'])) {
+                                $images[] = $state['image']['value']['url'];
+                            }
                         }
-                    }
-                    if (isset($state['imagemobile'])) {
-                        if (isset($state['imagemobile']['value'])) {
-                            $images[] = $state['imagemobile']['value']['url'];
+                        if (isset($state['imagemobile'])) {
+                            if (isset($state['imagemobile']['value'])) {
+                                $images[] = $state['imagemobile']['value']['url'];
+                            }
                         }
                     }
                 }
