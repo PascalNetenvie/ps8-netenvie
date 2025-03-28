@@ -35,7 +35,8 @@ use PrestaShop\PrestaShop\Core\Product\ProductExtraContentFinder;
 use PrestaShop\PrestaShop\Core\Product\ProductInterface;
 
 use PrestaShop\PrestaShop\Core\Util\File\YamlParser;
-class ProductControllerTheme extends ProductControllerCore {
+class ProductControllerTheme extends ProductControllerCore
+{
 
     var $themeSettings = [];
     var $overrideSettings = [];
@@ -49,7 +50,8 @@ class ProductControllerTheme extends ProductControllerCore {
         parent::init();
     }
 
-    public function initContent() {
+    public function initContent()
+    {
         $res = parent::initContent();
         if (isset($this->overrideSettings['remove_init_content_override']) && $this->overrideSettings['remove_init_content_override']) {
             return $res;
@@ -63,7 +65,9 @@ class ProductControllerTheme extends ProductControllerCore {
         return $res;
     }
 
-    public function displayAjaxRefresh() {        $res = parent::initContent();
+    public function displayAjaxRefresh()
+    {
+        $res = parent::initContent();
         parent::displayAjaxRefresh();
         if (isset($this->overrideSettings['remove_display_ajax_refresh_override']) && $this->overrideSettings['remove_display_ajax_refresh_override']) {
             return;
@@ -74,14 +78,15 @@ class ProductControllerTheme extends ProductControllerCore {
         return $res;
     }
 
-    public function assignOtherDescriptions() {
+    public function assignOtherDescriptions()
+    {
 
         $product_for_template = $this->context->smarty->getTemplateVars('product');
         if ($product_for_template) {
-			
-			$manufacturer = new Manufacturer( $product_for_template->id_manufacturer, $this->context->language->id);
-			$this->context->smarty->assign('manufacturername', $manufacturer->name);
-		
+
+            $manufacturer = new Manufacturer($product_for_template->id_manufacturer, $this->context->language->id);
+            $this->context->smarty->assign('manufacturername', $manufacturer->name);
+
             $description = $product_for_template->description;
             //var_dump($description);
             // preg_match_all("|###(.*)###|U", $description, $titres, PREG_PATTERN_ORDER);
@@ -99,6 +104,8 @@ class ProductControllerTheme extends ProductControllerCore {
                     }
                     if (count($otherDescription) > 1) {
                         $otherDescriptions[] = $otherDescription;
+                    } else {
+                        $otherDescriptions[] = $all;
                     }
                 }
             }
@@ -107,7 +114,8 @@ class ProductControllerTheme extends ProductControllerCore {
         }
     }
 
-    public function assignAllImages() {
+    public function assignAllImages()
+    {
         $isAjax = Tools::getValue('ajax');
         $productIdAttribute = (int) Tools::getValue('id_product_attribute');
         $productIdAttribute = 0;
@@ -118,7 +126,7 @@ class ProductControllerTheme extends ProductControllerCore {
             $name = is_array($product->name) ? $product->name[$id_lang] : $product->name;
             $rawProduct = array('id_product' => $productId, 'name' => $name, 'reference' => $product->reference);
             $imageRetriever = new ImageRetriever(
-                    $this->context->link
+                $this->context->link
             );
 
             $allImages = $imageRetriever->getAllProductImages($rawProduct, $this->context->language);
