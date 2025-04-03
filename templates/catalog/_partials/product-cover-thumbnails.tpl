@@ -95,12 +95,12 @@
                     <div class="">
                         {if $defaultImage}
                             <img class="img-fluid"
-                                srcset="{$defaultImage.bySize.pdt_540.url} 680w,{$defaultImage.bySize.pdt_360.url} 360w"
-                                src="{$defaultImage.bySize.pdt_300.url}" alt="{$defaultImage.legend}"
+                                srcset="{if !empty($defaultImage.bySize.pdt_540.sources.webp)}{$defaultImage.bySize.pdt_540.sources.webp}{else}{$defaultImage.bySize.pdt_540.url}{/if} 680w,{if !empty($defaultImage.bySize.pdt_360.sources.webp)}{$defaultImage.bySize.pdt_360.sources.webp}{else}{$defaultImage.bySize.pdt_360.url}{/if} 360w"
+                                src="{if !empty($defaultImage.bySize.pdt_300.sources.webp)}{$defaultImage.bySize.pdt_300.sources.webp}{else}{$defaultImage.bySize.pdt_300.url}{/if}"
                                 title="{$defaultImage.legend}" sizes="(min-width: 768px) 680px, (max-width: 767px) 320px"
                                 width="320" height="320" alt="{$defaultImage.legend}" title="{$defaultImage.legend}">
                             <noscript>
-                                <img class="img-fluid" src="{$defaultImage.bySize.pdt_540.url}" alt="{$defaultImage.legend}">
+                                <img class="img-fluid" src="{if !empty($defaultImage.bySize.pdt_300.sources.webp)}{$defaultImage.bySize.pdt_300.sources.webp}{else}{$defaultImage.bySize.pdt_300.url}{/if}" alt="{$defaultImage.legend}">
                             </noscript>
                         {elseif isset($urls.no_picture_image)}
                             <img class="lazyload" src="{$urls.no_picture_image.bySize.pdt_540.url}">
@@ -123,12 +123,12 @@
                                 <img class="img-fluid lazyload"
                                     {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto" {/if}
                                     {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}
-                                    srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
-                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{$image.bySize.pdt_300.url}"
+                                    srcset="{if !empty($image.bySize.pdt_540.sources.webp)}{$image.bySize.pdt_540.sources.webp}{else}{$image.bySize.pdt_540.url}{/if} 680w,{if !empty($image.bySize.pdt_360.sources.webp)}{$image.bySize.pdt_360.sources.webp}{else}{$image.bySize.pdt_360.url}{/if} 360w"
+                                    {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{if !empty($image.bySize.pdt_300.sources.webp)}{$image.bySize.pdt_300.sources.webp}{else}{$image.bySize.pdt_300.url}{/if}"
                                     alt="{$image.legend}" title="{$image.legend}"
                                     sizes="(min-width: 768px) 680px, (max-width: 767px) 320px" width="320" height="320">
                                 <noscript>
-                                    <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
+                                    <img class="img-fluid" src="{if !empty($image.bySize.pdt_300.sources.webp)}{$image.bySize.pdt_300.sources.webp}{else}{$image.bySize.pdt_300.url}{/if}">
                                 </noscript>
                             </div>
                             <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button"
@@ -149,12 +149,12 @@
                                     <img class="img-fluid lazyload"
                                         {if !$smarty.foreach.images.first && !$defaultImage}data-sizes="auto" {/if}
                                         {if !$smarty.foreach.images.first && !$defaultImage}data-{/if}
-                                        srcset="{$image.bySize.pdt_540.url} 680w,{$image.bySize.pdt_360.url} 360w"
-                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{$image.bySize.pdt_300.url}"
+                                        srcset="{if !empty($image.bySize.pdt_540.sources.webp)}{$image.bySize.pdt_540.sources.webp}{else}{$image.bySize.pdt_540.url}{/if} 680w,{if !empty($image.bySize.pdt_360.sources.webp)}{$image.bySize.pdt_360.sources.webp}{else}{$image.bySize.pdt_360.url}{/if} 360w"
+                                        {if !$smarty.foreach.images.first && !$defaultImage}data-{/if} src="{if !empty($image.bySize.pdt_300.sources.webp)}{$image.bySize.pdt_300.sources.webp}{else}{$image.bySize.pdt_300.url}{/if}"
                                         alt="{$image.legend}" title="{$image.legend}"
                                         sizes="(min-width: 768px) 680px, (max-width: 767px) 320px" width="320" height="320">
                                     <noscript>
-                                        <img class="img-fluid" src="{$image.bySize.pdt_300.url}" alt="{$image.legend}">
+                                        <img class="img-fluid" src="{if !empty($image.bySize.pdt_300.sources.webp)}{$image.bySize.pdt_300.sources.webp}{else}{$image.bySize.pdt_300.url}{/if}}">
                                     </noscript>
                                 </div>
                                 <button data-id-image="{$image.id_image}" data-num-image="{$numImage}" type="button"
@@ -192,7 +192,7 @@
 
                         <div>
                             {if $defaultImage}
-                                <img id="image-{$defaultImage.id_image}" data-src="{$defaultImage.bySize.large_default.url}"
+                                <img id="image-{$defaultImage.id_image}" data-src="{if !empty($defaultImage.bySize.large_default.sources.webp)}{$defaultImage.bySize.large_default.sources.webp}{else}{$defaultImage.bySize.large_default.url}{/if}"
                                     class="img-fluid lazyload" width="{$defaultImage.bySize.large_default.width}"
                                     alt="{$defaultImage.legend}" title="{$defaultImage.legend}" />
                             {/if}
@@ -201,7 +201,7 @@
                         {foreach from=$product.images item=image}
                             {if $image.id_image != $defaultImage.id_image}
                                 <div>
-                                    <img id="image-{$image.id_image}" data-src="{$image.bySize.large_default.url}" class="img-fluid lazyload"
+                                    <img id="image-{$image.id_image}" data-src="{if !empty($image.bySize.large_default.sources.webp)}{$image.bySize.large_default.sources.webp}{else}{$image.bySize.large_default.url}{/if}" class="img-fluid lazyload"
                                         width="{$image.bySize.large_default.width}" alt="{$image.legend}" title="{$image.legend}" />
                                 </div>
                             {/if}
@@ -211,7 +211,7 @@
                             {foreach from=$allImages item=image}
                                 {if $image.id_image != $defaultImage.id_image}
                                     <div>
-                                        <img id="image-{$image.id_image}" data-src="{$image.bySize.large_default.url}" class="img-fluid lazyload"
+                                        <img id="image-{$image.id_image}" data-src="{if !empty($image.bySize.large_default.sources.webp)}{$image.bySize.large_default.sources.webp}{else}{$image.bySize.large_default.url}{/if}" class="img-fluid lazyload"
                                             width="{$image.bySize.large_default.width}" alt="{$image.legend}" title="{$image.legend}" />
                                     </div>
                                 {/if}
