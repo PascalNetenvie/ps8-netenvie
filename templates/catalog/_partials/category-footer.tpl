@@ -30,7 +30,7 @@
 
         {if $category.image.large.url && isset($thumbUri)}
             <div class="col-md-6 category-cover">
-                <img src="{$category.image.large.url}" class="lazyload"
+                <img src="{if !empty($category.image.large.sources.webp)}{$category.image.large.sources.webp}{else}{$category.image.large.url}{/if}" class="lazyload"
                     alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}">
             </div>
         {/if}
