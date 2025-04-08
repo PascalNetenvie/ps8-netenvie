@@ -111,6 +111,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesCss = array();
         $controllerExcludesCss['IndexController'] = $ex_home;
         $controllerExcludesCss['CategoryController'] = $ex_cat;
+        $controllerExcludesCss['ManufacturerController'] = $ex_cat;
         $controllerExcludesCss['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
         $controllerExcludesCss['ProductController'] = $ex_prod;
         $controllerExcludesCss['CartController'] = $ex_cde;
@@ -181,7 +182,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('themehome', '/assets/js/themehome.js', ['position' => 'bottom', 'priority' => 51]);
             }
-            if ($controllerClass == 'CategoryController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('themecategory', '/assets/js/themecategory.js', ['position' => 'bottom', 'priority' => 51]);
             }
             if ($controllerClass == 'ProductController') {
@@ -229,6 +230,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesJs = array();
         $controllerExcludesJs['IndexController'] = $ex_home;
         $controllerExcludesJs['CategoryController'] = $ex_cat;
+        $controllerExcludesJs['ManufacturerController'] = $ex_cat;
         $controllerExcludesJs['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
         $controllerExcludesJs['ProductController'] = $ex_prod;
         $controllerExcludesJs['CartController'] = $ex_cde;
