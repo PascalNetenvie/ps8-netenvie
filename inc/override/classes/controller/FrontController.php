@@ -166,7 +166,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('home', '/themes/home.js', ['position' => 'bottom', 'priority' => 50]);
             }
-            if ($controllerClass == 'CategoryController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('category', '/themes/category.js', ['position' => 'bottom', 'priority' => 50]);
             }
             if ($controllerClass == 'ProductController') {
