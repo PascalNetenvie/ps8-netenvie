@@ -22,11 +22,11 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<a href="{$urls.pages.my_account}" class="account-link">
+<a href="{$urls.pages.my_account}" class="btn btn-outline-primary btn-small account-link">
   <i class="material-icons">&#xE5CB;</i>
   <span>{l s='Back to your account' d='Shop.Theme.Customeraccount'}</span>
 </a>
-<a href="{$urls.pages.index}" class="account-link">
+<a href="{$urls.pages.index}" class="btn btn-outline-primary btn-small account-link">
   <i class="material-icons">&#xE88A;</i>
   <span>{l s='Home' d='Shop.Theme.Global'}</span>
 </a>
