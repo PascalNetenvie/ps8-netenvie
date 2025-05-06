@@ -6,6 +6,7 @@ New features of 2024 Netenvie PS8 :
 
     Better PS 8.2.x Compatibility.
     Updated Bootstrap.
+    Webp comptibility (must enable exp feature multi-format images).
 
 Compatibility
 
