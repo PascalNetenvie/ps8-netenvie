@@ -340,12 +340,12 @@ class FrontControllerTheme extends FrontControllerCore
                 foreach ($states as $state) {
                     if (is_array($state)) {
                         if (isset($state['image'])) {
-                            if (isset($state['image']['value'])) {
+                            if (isset($state['image']['value']) && is_array($state['image']['value'])) {
                                 $images[] = $state['image']['value']['url'];
                             }
                         }
                         if (isset($state['imagemobile'])) {
-                            if (isset($state['imagemobile']['value'])) {
+                            if (isset($state['imagemobile']['value']) && is_array($state['imagemobile']['value'])) {
                                 $images[] = $state['imagemobile']['value']['url'];
                             }
                         }
