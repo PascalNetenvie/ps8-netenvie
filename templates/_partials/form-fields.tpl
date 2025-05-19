@@ -56,6 +56,8 @@
                 {block name='form_field_comment'}
                     {if (!$field.required && !in_array($field.type, ['radio-buttons', 'checkbox']))}
                             <small class="text-muted">({l s='Optional' d='Shop.Forms.Labels'})</small>
+                    {else}
+                         <span class="text-danger">*</span>
                     {/if}
                 {/block}
             </label>
