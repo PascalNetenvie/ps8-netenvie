@@ -37,6 +37,11 @@ class FrontControllerTheme extends FrontControllerCore
             return parent::addJqueryUI($component, $theme, $check_dependencies);
         }
 
+        $controllerClass = get_class($this->context->controller);
+        if ($controllerClass == 'GalleriqueGalleryModuleFrontController') {
+            return parent::addJqueryUI($component, $theme, $check_dependencies);
+        }
+
         if (!is_array($component)) {
             $component = [$component];
         }
