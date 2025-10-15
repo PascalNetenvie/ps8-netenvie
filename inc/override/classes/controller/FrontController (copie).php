@@ -31,14 +31,9 @@ class FrontControllerTheme extends FrontControllerCore
      * @param string $theme
      * @param bool $check_dependencies
      */
-    public function addJqueryUI2($component, $theme = 'base', $check_dependencies = true)
+    public function addJqueryUI($component, $theme = 'base', $check_dependencies = true)
     {
         if (isset($this->overrideSettings['remove_jquery_ui_override']) && $this->overrideSettings['remove_jquery_ui_override']) {
-            return parent::addJqueryUI($component, $theme, $check_dependencies);
-        }
-
-        $controllerClass = get_class($this->context->controller);
-        if ($controllerClass == 'GalleriqueGalleryModuleFrontController') {
             return parent::addJqueryUI($component, $theme, $check_dependencies);
         }
 
@@ -164,7 +159,6 @@ class FrontControllerTheme extends FrontControllerCore
         $modeDebug = isset($_GET['modeDebug']);
         $controllerClass = get_class($this->context->controller);
 
-        //die(  $controllerClass );
         /* JS du core */
         if ($relativePath == '/themes/core.js') {
             $params['priority'] = 50;
@@ -172,7 +166,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('home', '/themes/home.js', ['position' => 'bottom', 'priority' => 50]);
             }
-            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride' || $controllerClass == 'pm_advancedsearch4seoModuleFrontController' || $controllerClass == 'pm_advancedsearch4searchresultsModuleFrontController') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('category', '/themes/category.js', ['position' => 'bottom', 'priority' => 50]);
             }
             if ($controllerClass == 'ProductController') {
@@ -188,7 +182,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'IndexController') {
                 $this->registerJavascript('themehome', '/assets/js/themehome.js', ['position' => 'bottom', 'priority' => 51]);
             }
-            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride' || $controllerClass == 'pm_advancedsearch4seoModuleFrontController' || $controllerClass == 'pm_advancedsearch4searchresultsModuleFrontController') {
+            if ($controllerClass == 'CategoryController' || $controllerClass == 'ManufacturerController' || $controllerClass == 'pm_advancedsearch4seoModuleFrontControllerOverride') {
                 $this->registerJavascript('themecategory', '/assets/js/themecategory.js', ['position' => 'bottom', 'priority' => 51]);
             }
             if ($controllerClass == 'ProductController') {
@@ -238,8 +232,6 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesJs['CategoryController'] = $ex_cat;
         $controllerExcludesJs['ManufacturerController'] = $ex_cat;
         $controllerExcludesJs['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
-        $controllerExcludesJs['pm_advancedsearch4searchresultsModuleFrontController'] = $ex_cat;
-        $controllerExcludesJs['pm_advancedsearch4seoModuleFrontController'] = $ex_cat;
         $controllerExcludesJs['ProductController'] = $ex_prod;
         $controllerExcludesJs['CartController'] = $ex_cde;
         $controllerClass = get_class($this->context->controller);
