@@ -120,6 +120,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesCss['pm_advancedsearch4seoModuleFrontControllerOverride'] = $ex_cat;
         $controllerExcludesCss['ProductController'] = $ex_prod;
         $controllerExcludesCss['CartController'] = $ex_cde;
+        $controllerExcludesCss['OrderController'] = $ex_cde;
         $controllerClass = get_class($this->context->controller);
         $modeDebug = isset($_GET['modeDebug']);
         if (isset($controllerExcludesCss[$controllerClass])) {
@@ -178,7 +179,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'ProductController') {
                 $this->registerJavascript('product', '/themes/product.js', ['position' => 'bottom', 'priority' => 50]);
             }
-            if ($controllerClass == 'CartController') {
+            if ($controllerClass == 'CartController' || $controllerClass == 'OrderController') {
                 $this->registerJavascript('product', '/themes/checkout.js', ['position' => 'bottom', 'priority' => 50]);
             }
         }
@@ -194,7 +195,7 @@ class FrontControllerTheme extends FrontControllerCore
             if ($controllerClass == 'ProductController') {
                 $this->registerJavascript('themeproduct', '/assets/js/themeproduct.js', ['position' => 'bottom', 'priority' => 51]);
             }
-            if ($controllerClass == 'CartController') {
+            if ($controllerClass == 'CartController' || $controllerClass == 'OrderController') {
                 $this->registerJavascript('themeproduct', '/assets/js/themecheckout.js', ['position' => 'bottom', 'priority' => 51]);
             }
         }
@@ -242,6 +243,7 @@ class FrontControllerTheme extends FrontControllerCore
         $controllerExcludesJs['pm_advancedsearch4seoModuleFrontController'] = $ex_cat;
         $controllerExcludesJs['ProductController'] = $ex_prod;
         $controllerExcludesJs['CartController'] = $ex_cde;
+        $controllerExcludesJs['OrderController'] = $ex_cde;
         $controllerClass = get_class($this->context->controller);
         //die($controllerClass);
         $modeDebug = isset($_GET['modeDebug']);
