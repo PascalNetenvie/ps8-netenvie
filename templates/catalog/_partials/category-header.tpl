@@ -4,6 +4,10 @@
             <span class="small"> - Page {$smarty.get.page}</span>{/if}
         </h1>
     </div>
+
+                        <a class="lien" href="#category-description">
+                            {l s='Read description' d='Shop.Theme.Catalog'}
+                        </a>
     {if ($category.description || isset($description1) || $category.image.bySize.large_default.url || isset($thumbUri)) && $listing.pagination.items_shown_from == 1}
         <div class="d-flex">
             {if isset($description1) }
