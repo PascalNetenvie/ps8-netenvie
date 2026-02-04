@@ -42,8 +42,8 @@ import SlickSlider from './components/slick';
 
 //import  '../node_modules/jquery-zoom/jquery.zoom.min.js';
 
-import './checkout';
-import './customer';
+//import './checkout';
+//import './customer';
 import './listing';
 //import './product';
 
